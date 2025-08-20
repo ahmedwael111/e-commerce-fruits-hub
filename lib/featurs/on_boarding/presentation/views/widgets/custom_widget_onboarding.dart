@@ -1,3 +1,7 @@
+import 'package:e_commerce_fruits_hub/constants.dart';
+import 'package:e_commerce_fruits_hub/core/services/shared_prefrenseces_singleton.dart';
+import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
+import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -8,16 +12,18 @@ class CustomWidgetOnboarding extends StatelessWidget {
     required this.backgroundImgae,
     required this.title,
     required this.subTitle,
+    required this.vis,
   });
   final String image, backgroundImgae;
   final String subTitle;
   final Widget title;
+  final bool vis;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.6,
+          height: MediaQuery.of(context).size.height * 0.55,
           width: double.infinity,
           child: Stack(
             children: [
@@ -34,7 +40,28 @@ class CustomWidgetOnboarding extends StatelessWidget {
                 bottom: 0,
                 child: SvgPicture.asset(image),
               ),
-              Positioned(left: 20, right: 20, top: 40, child: Text('تخط')),
+              Visibility(
+                visible: vis,
+                child: Positioned(
+                  right: 16,
+                  top: 16,
+                  child: GestureDetector(
+                    onTap: () {
+                      Prefs.setbool(kisOnBordingSeen, true);
+                      Navigator.pushReplacementNamed(
+                        context,
+                        LoginView.routeName,
+                      );
+                    },
+                    child: Text(
+                      'تخط',
+                      style: AppTextStyles.regular13.copyWith(
+                        color: const Color(0xFF4E5556),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -42,11 +69,13 @@ class CustomWidgetOnboarding extends StatelessWidget {
         title,
         const SizedBox(height: 24),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 37),
           child: Text(
             subTitle,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: AppTextStyles.simibold13.copyWith(
+              color: const Color(0xFF4E5556),
+            ),
           ),
         ),
       ],
