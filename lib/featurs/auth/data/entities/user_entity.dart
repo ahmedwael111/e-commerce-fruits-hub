@@ -1,4 +1,4 @@
-class UserEntity { // model of data 
+class UserEntity { //  shape of model of data  : represents data of user
   final String id;
   final String name;
   final String email;

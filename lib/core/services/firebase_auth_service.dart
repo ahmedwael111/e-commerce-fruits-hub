@@ -1,16 +1,18 @@
 import 'package:e_commerce_fruits_hub/core/errors/exeptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class FirebaseAuthService {
-  // raper
+class FirebaseAuthService { // raper for firebase auth or firebase consumer
+  
   Future<User> createUserWithEmailAndPassword({
     required String email,
     required String password,
+     String? name,
   }) async {
    try {
   final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
     email: email,
     password: password,
+    // name: name, // Assuming you have a way to set the name in Firebase User
   );
     return credential.user!;
 } on FirebaseAuthException catch (e) {
