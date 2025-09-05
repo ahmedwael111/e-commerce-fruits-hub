@@ -1,16 +1,17 @@
-import 'package:e_commerce_fruits_hub/constants.dart';
 import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/widgets/coustom_checkBook.dart';
 import 'package:flutter/material.dart';
 
 class TermsAndConditionsWidget extends StatelessWidget {
-  const TermsAndConditionsWidget({super.key});
-
+  const TermsAndConditionsWidget({super.key, this.onChanged});
+final void Function(bool)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CoustomCheckbook(),
+        CoustomCheckbook( 
+          onChanged:onChanged
+        ),
         SizedBox(width: 16),
         Flexible(
           child: Text.rich(

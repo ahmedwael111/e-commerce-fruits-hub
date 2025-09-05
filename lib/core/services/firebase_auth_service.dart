@@ -1,32 +1,50 @@
+import 'dart:developer';
+
 import 'package:e_commerce_fruits_hub/core/errors/exeptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class FirebaseAuthService { // raper for firebase auth or firebase consumer
-  
+class FirebaseAuthService {
+  // raper for firebase auth or firebase consumer
+
   Future<User> createUserWithEmailAndPassword({
     required String email,
     required String password,
-     String? name,
+    String? name,
   }) async {
-   try {
-  final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-    email: email,
-    password: password,
-    // name: name, // Assuming you have a way to set the name in Firebase User
-  );
-    return credential.user!;
-} on FirebaseAuthException catch (e) {
-  if (e.code == 'weak-password') {
-    throw CoustomException(message:'The password provided is too weak.');
-  } else if (e.code == 'email-already-in-use') {
-    throw CoustomException(message:'The account already exists for that email.');
-  }
-  else {
-   throw CoustomException(message:'there was an error , please try again later' );
-  }
-} catch (e) {
-  throw CoustomException(message: 'there was an error , please try again later');
-}
+    try {
+      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+        // name: name, // Assuming you have a way to set the name in Firebase User
+      );
+      return credential.user!;
+    } on FirebaseAuthException catch (e) {
+      log(
+        'exeption in FirebaseAuthService.createUserWithEmailAndPassword: ${e.message} and code message: ${e.code}',
+      );
+      if (e.code == 'weak-password') {
+        throw CoustomException(
+          message: 'كلمة المرور ضعيفة جدًا. يرجى اختيار كلمة مرور أقوى.',
+        );
+      } else if (e.code == 'email-already-in-use') {
+        throw CoustomException(
+          message: 'الإيميل مستخدم بالفعل. يرجى استخدام إيميل آخر.',
+        );
+      } else if (e.code == 'network-request-failed') {
+        throw CoustomException(
+          message: 'تأكد من اتصالك بالإنترنت وحاول مرة أخرى.❌',
+        );
+      } else {
+        throw CoustomException(
+          message: 'حدث خطاء غير متوقع. يرجى المحاولة مرة أخرى ❌',
+        );
+      }
+    } catch (e) {
+      log('exeption in FirebaseAuthService.createUserWithEmailAndPassword : global catch : $e');
+      throw CoustomException(
+        message: 'الحدث خطأ غير متوقع. يرجى المحاولة مرة أخرى لاحقًا.❌',
+      );
+    }
   }
 
   //   Future<UserEntity> signInWithEmailAndPassword({
