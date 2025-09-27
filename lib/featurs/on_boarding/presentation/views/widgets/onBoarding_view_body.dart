@@ -2,7 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:e_commerce_fruits_hub/constants.dart';
 import 'package:e_commerce_fruits_hub/core/services/shared_prefrenseces_singleton.dart';
 import 'package:e_commerce_fruits_hub/core/utils/app_colors.dart';
-import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/login_view.dart';
+import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/sginin_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/on_boarding/presentation/views/widgets/coustom_bottom.dart';
 import 'package:e_commerce_fruits_hub/featurs/on_boarding/presentation/views/widgets/page_view.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +39,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
       child: Column(
         children: [
           PageViewOnBoarding(pageController: _pageController),
-          // SizedBox(height: 12),
+          SizedBox(height: 32),
           DotsIndicator(
             dotsCount: 2,
             // position: _currentPage.toDouble(),
@@ -54,7 +54,8 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
               // Grayscale-950
             ),
           ),
-          SizedBox(height: 29),
+          Spacer(),
+
           Visibility(
             visible: _currentPage == 1,
             maintainSize: true,
@@ -65,7 +66,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
               child: CoustomBottom(
                 onPressed: () {
                   Prefs.setbool(kisOnBordingSeen, true);
-                  Navigator.pushReplacementNamed(context, LoginView.routeName);
+                  Navigator.pushReplacementNamed(context, SigninView.routeName);
                 },
                 text: 'ابدأ الان',
               ),

@@ -4,14 +4,12 @@ import 'package:flutter/material.dart';
 
 class TermsAndConditionsWidget extends StatelessWidget {
   const TermsAndConditionsWidget({super.key, this.onChanged});
-final void Function(bool)? onChanged;
+  final void Function(bool)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CoustomCheckbook( 
-          onChanged:onChanged
-        ),
+        CoustomCheckbook(onChanged: onChanged),
         SizedBox(width: 16),
         Flexible(
           child: Text.rich(

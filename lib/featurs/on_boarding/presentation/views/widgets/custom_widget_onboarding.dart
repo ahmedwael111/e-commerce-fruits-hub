@@ -1,7 +1,7 @@
 import 'package:e_commerce_fruits_hub/constants.dart';
 import 'package:e_commerce_fruits_hub/core/services/shared_prefrenseces_singleton.dart';
 import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
-import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/login_view.dart';
+import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/sginin_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -23,7 +23,7 @@ class CustomWidgetOnboarding extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.55,
+          height: MediaQuery.of(context).size.height * 0.5,
           width: double.infinity,
           child: Stack(
             children: [
@@ -50,7 +50,7 @@ class CustomWidgetOnboarding extends StatelessWidget {
                       Prefs.setbool(kisOnBordingSeen, true);
                       Navigator.pushReplacementNamed(
                         context,
-                        LoginView.routeName,
+                        SigninView.routeName,
                       );
                     },
                     child: Text(

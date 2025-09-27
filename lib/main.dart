@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:e_commerce_fruits_hub/core/helper_functions.dart/routs.dart';
 import 'package:e_commerce_fruits_hub/core/services/bloc_observer.dart';
 import 'package:e_commerce_fruits_hub/core/services/get_it_server_locator.dart';
@@ -19,7 +20,9 @@ void main() async {
   await Prefs.init();
   setupGetIt();
   Bloc.observer = AppBlocObserver();
-  runApp(const FruitsHubApp());
+  runApp(
+    DevicePreview(enabled: false, builder: (context) => const FruitsHubApp()),
+  );
 }
 
 class FruitsHubApp extends StatelessWidget {
@@ -28,6 +31,8 @@ class FruitsHubApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // locale: DevicePreview.locale(context),
+      // builder: DevicePreview.appBuilder,
       onGenerateRoute: generateRoute,
       initialRoute: SplashView.routeName,
       localizationsDelegates: [

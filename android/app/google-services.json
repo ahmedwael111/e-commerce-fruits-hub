@@ -12,7 +12,20 @@
           "package_name": "com.example.e_commerce_fruits_hub"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "421466721299-tmt45d726vdo8pj1o7raiblbv1ve11g5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.e_commerce_fruits_hub",
+            "certificate_hash": "ddbf75af5b0052f65f34b31fc7e2c2a46487e450"
+          }
+        },
+        {
+          "client_id": "421466721299-1bubmfp5u504q05mvv30rvue67qrt64b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCvZCoNSBYg0ZzlYdPZmEwfVQxuRLBKdPo"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "421466721299-1bubmfp5u504q05mvv30rvue67qrt64b.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "421466721299-1btp9tp5rkcrdh9fa4nrfr8nlb529rvq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eCommerceFruitsHub"
+              }
+            }
+          ]
         }
       }
     }

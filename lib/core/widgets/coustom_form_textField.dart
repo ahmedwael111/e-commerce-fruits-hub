@@ -6,18 +6,20 @@ class CoustomFormTextfield extends StatelessWidget {
     super.key,
     this.hintText,
     required this.keyboardType,
-    this.suffixIcon,this.onSaved,  this.obscureText = false,
+    this.suffixIcon,
+    this.onSaved,
+    this.obscureText = false,
   });
   final String? hintText;
   final TextInputType keyboardType;
   final Widget? suffixIcon;
   final void Function(String?)? onSaved;
-  final bool obscureText ;
+  final bool obscureText;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText: obscureText,
-      onSaved:onSaved ,
+      onSaved: onSaved,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'يجب إدخال هذا الحقل';

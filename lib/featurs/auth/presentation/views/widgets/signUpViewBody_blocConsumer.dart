@@ -1,8 +1,9 @@
+import 'package:e_commerce_fruits_hub/core/widgets/coustom_progress_indicator.dart';
+import 'package:e_commerce_fruits_hub/core/widgets/snake_bar.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/presentation/cubits/signup/signup_cubit_cubit.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/widgets/signup_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class SignUpViewBodyBlocConsumer extends StatelessWidget {
   const SignUpViewBodyBlocConsumer({super.key});
@@ -18,17 +19,11 @@ class SignUpViewBodyBlocConsumer extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return ModalProgressHUD(
-          inAsyncCall: state is SignupCubitLoading ? true : false,
-          child: SignupViewBody(),
+        return CoustomProgressIndicator(
+          isLoad: state is SignupCubitLoading ? true : false,
+          child: const SignupViewBody(),
         );
       },
     );
-  }
-
-  void snakBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(message)));
   }
 }

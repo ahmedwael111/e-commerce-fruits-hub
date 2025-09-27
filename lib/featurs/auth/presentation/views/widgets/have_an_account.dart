@@ -3,9 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class HaveAnAccount extends StatelessWidget {
-  const HaveAnAccount({
-    super.key,
-  });
+  const HaveAnAccount({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +22,7 @@ class HaveAnAccount extends StatelessWidget {
                   ..onTap = () {
                     Navigator.pop(context);
                   },
-    
+
             text: 'تسجيل دخول',
             style: AppTextStyles.simibold16.copyWith(
               color: const Color(0xFF1B5E37) /* Green1-500 */,

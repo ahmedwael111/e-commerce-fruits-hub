@@ -5,14 +5,14 @@ import 'package:flutter_svg/svg.dart';
 
 class CoustomCheckbook extends StatefulWidget {
   const CoustomCheckbook({super.key, this.onChanged});
-final ValueChanged<bool>? onChanged;
+  final ValueChanged<bool>? onChanged;
   @override
   State<CoustomCheckbook> createState() => _CoustomCheckbookState();
 }
 
 class _CoustomCheckbookState extends State<CoustomCheckbook> {
   late bool isChecked = false;
-       
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

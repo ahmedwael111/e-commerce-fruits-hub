@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 
 abstract class Failuer {
@@ -22,7 +21,9 @@ class ServerFailuer extends Failuer {
         return ServerFailuer('Its Bad Certificate, Please try again!');
       case DioExceptionType.badResponse:
         return ServerFailuer.fromResponse(
-            dioException.response!.statusCode!, dioException.response!.data);
+          dioException.response!.statusCode!,
+          dioException.response!.data,
+        );
       case DioExceptionType.cancel:
         return ServerFailuer('Receive time out with Api Server');
       case DioExceptionType.connectionError:
@@ -49,20 +50,17 @@ class ServerFailuer extends Failuer {
   }
 }
 
-
-
-
 // import 'package:dio/dio.dart';
- 
+
 // abstract class Failuer {
 //   final String errorMassage;
- 
+
 //   const Failuer(this.errorMassage);
 // }
- 
+
 // class ServerFailure extends Failuer {
 //   ServerFailure(super.errorMassage);
- 
+
 //   factory ServerFailure.fromDioException(DioException dioexp) {
 //     switch (dioexp.type) {
 //       case DioExceptionType.connectionTimeout:
@@ -85,7 +83,7 @@ class ServerFailuer extends Failuer {
 //         return ServerFailure('Opps There was an Error, Please try again');
 //     }
 //   }
- 
+
 //   factory ServerFailure.fromResponse(int? statusCode, dynamic response) {
 //     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
 //       return ServerFailure(response['error']['message']);

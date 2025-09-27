@@ -65,5 +65,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'fruits-hub-20406.firebasestorage.app',
     iosBundleId: 'com.example.eCommerceFruitsHub',
   );
-
 }
