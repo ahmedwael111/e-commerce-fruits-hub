@@ -3,7 +3,9 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_fruits_hub/core/errors/exeptions.dart';
 import 'package:e_commerce_fruits_hub/core/errors/failuer.dart';
+import 'package:e_commerce_fruits_hub/core/services/database_service.dart';
 import 'package:e_commerce_fruits_hub/core/services/firebase_auth_service.dart';
+import 'package:e_commerce_fruits_hub/core/utils/backend_endpoints_statics.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/domain/entities/user_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/data/models/user_model.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/domain/repos/auth_repo.dart';
@@ -11,28 +13,45 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepoImplementation implements AuthRepo {
   final FirebaseAuthService _firebaseAuthService;
-
-  AuthRepoImplementation({required FirebaseAuthService firebaseAuthService})
-    : _firebaseAuthService = firebaseAuthService;
+  final DatabaseService databaseService;
+  AuthRepoImplementation({
+    required this.databaseService,
+    required FirebaseAuthService firebaseAuthService,
+  }) : _firebaseAuthService = firebaseAuthService;
   @override
   Future<Either<ServerFailuer, UserEntity>> creatUserEmailAndPassword({
     required String email,
     required String password,
     required String name,
   }) async {
+    User? user;
     try {
-      var user = _firebaseAuthService.createUserWithEmailAndPassword(
+      user = await _firebaseAuthService.createUserWithEmailAndPassword(
         email: email,
         password: password,
         name: name,
       );
-      return right(UserModel.fromFirebaseUser(await user));
+      var userEntity = UserEntity(id: user.uid, name: name, email: email);
+
+      await addUser(user: userEntity); // add user to database
+      return right(userEntity);
     } on CoustomException catch (e) {
+      if (user != null) {
+        await _firebaseAuthService
+            .deleteUser(); // delete user from firebase auth if there is an error
+      }
       log(
         'exeption in AuthRepoImplementation.creatUserEmailAndPassword: ${e.message}',
       );
       return left(ServerFailuer(e.message));
     } catch (e) {
+      if (user != null) {
+        await _firebaseAuthService
+            .deleteUser(); // delete user from firebase auth if there is an error
+      }
+      log(
+        'exeption in AuthRepoImplementation.creatUserEmailAndPassword: ${e.toString()}',
+      );
       return left(ServerFailuer('خطأ غير متوقع'));
     }
   }
@@ -47,26 +66,50 @@ class AuthRepoImplementation implements AuthRepo {
         email: email,
         password: password,
       );
-      return right(UserModel.fromFirebaseUser(await user));
+      var userEntity = await getUserData(uid: (await user).uid);
+      return right(userEntity);
     } on CoustomException catch (e) {
       log(
         'exeption in AuthRepoImplementation.signInWithEmailAndPassword: ${e.message}',
       );
       return left(ServerFailuer(e.message));
     } catch (e) {
+      log(
+        'exeption in AuthRepoImplementation.signInWithEmailAndPassword: ${e.toString()}',
+      );
       return left(ServerFailuer('خطأ غير متوقع'));
     }
   }
 
   @override
   Future<Either<ServerFailuer, UserEntity>> signInWithGoogle() async {
+    User? user;
     try {
-      var user = _firebaseAuthService.signInWithGoogle();
-      return right(UserModel.fromFirebaseUser(await user));
+      user = await _firebaseAuthService.signInWithGoogle();
+      UserEntity userEntity = UserModel.fromFirebaseUser(user);
+      bool isUserExist = await databaseService.checkIfDataExist(
+        path: BackendEndpointsStatics.users,
+        documenId: user!.uid,
+      );
+      if (isUserExist) {
+        userEntity = await getUserData(uid: user.uid); // get user from database if exist
+      } else {
+        await addUser(user: userEntity);  // add user to database
+        userEntity = await getUserData(uid:  user.uid); // get user from database after adding
+      }
+      return right(userEntity);
     } on CoustomException catch (e) {
+      if (user != null) {
+        await _firebaseAuthService
+            .deleteUser(); // delete user from firebase auth if there is an error
+      }
       log('exeption in AuthRepoImplementation.signInWithGoogle: ${e.message}');
       return left(ServerFailuer(e.message));
     } catch (e) {
+      if (user != null) {
+        await _firebaseAuthService
+            .deleteUser(); // delete user from firebase auth if there is an error
+      }
       log(
         'exeption in AuthRepoImplementation.signInWithGoogle: ${e.toString()}',
       );
@@ -90,5 +133,23 @@ class AuthRepoImplementation implements AuthRepo {
       );
       return left(ServerFailuer('خطأ غير متوقع'));
     }
+  }
+
+  @override
+  Future addUser({required UserEntity user}) async {
+    await databaseService.saveData(
+      path: BackendEndpointsStatics.addUserData,
+      data: user.toMap(),
+      documenId: user.id,
+    );
+  }
+
+  @override
+  Future<UserEntity> getUserData({required String uid}) async {
+    var userData = await databaseService.getData(
+      path: BackendEndpointsStatics.getUserData,
+      documenId: uid,
+    );
+    return UserModel.fromMap(userData);
   }
 }

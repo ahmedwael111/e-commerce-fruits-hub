@@ -9,10 +9,12 @@ abstract class AuthRepo {
     required String password,
     required String name,
   });
+  Future addUser({ required UserEntity user}); // adding user to database
   Future<Either<ServerFailuer, UserEntity>> signInWithEmailAndPassword({
     required String email,
     required String password,
   });
+  Future<UserEntity> getUserData({ required String uid});
   Future<Either<ServerFailuer, UserEntity>> signInWithGoogle();
   Future<Either<ServerFailuer, UserEntity>> signInWithFacebook();
 }
