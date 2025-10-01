@@ -11,6 +11,7 @@ class CoustomAppBar extends StatelessWidget {
       height: 56,
       width: double.infinity,
       child: ListTile(
+        contentPadding: const EdgeInsets.all(0),
         title: Text(
           'صباح الخير !..',
           textAlign: TextAlign.right,

@@ -26,9 +26,21 @@ class Assets {
   /// assets/facebookLogo.svg
   static const String assetsFacebookLogo = "assets/facebookLogo.svg";
 
+  /// Assets for assetsFeaturedBackground2
+  /// assets/featured_background2.png
+  static const String assetsFeaturedBackground2 = "assets/featured_background2.png";
+
   /// Assets for assetsGoogleLogo
   /// assets/googleLogo.svg
   static const String assetsGoogleLogo = "assets/googleLogo.svg";
+
+  /// Assets for assetsHomeIconBold
+  /// assets/home_icon_bold.png
+  static const String assetsHomeIconBold = "assets/home_icon_bold.png";
+
+  /// Assets for assetsHomeIconOutline
+  /// assets/home_icon_outline.png
+  static const String assetsHomeIconOutline = "assets/home_icon_outline.png";
 
   /// Assets for assetsImage1OnBoarding
   /// assets/image_1_onBoarding.svg
@@ -58,8 +70,44 @@ class Assets {
   /// assets/planet.svg
   static const String assetsPlanet = "assets/planet.svg";
 
+  /// Assets for assetsProductIconBold
+  /// assets/product_icon_bold.png
+  static const String assetsProductIconBold = "assets/product_icon_bold.png";
+
+  /// Assets for assetsProductsOutline
+  /// assets/products_outline.png
+  static const String assetsProductsOutline = "assets/products_outline.png";
+
   /// Assets for assetsProfile
   /// assets/profile.png
   static const String assetsProfile = "assets/profile.png";
+
+  /// Assets for assetsProfileBold
+  /// assets/profile_bold.png
+  static const String assetsProfileBold = "assets/profile_bold.png";
+
+  /// Assets for assetsProfileIconOutline
+  /// assets/profile_icon_outline.png
+  static const String assetsProfileIconOutline = "assets/profile_icon_outline.png";
+
+  /// Assets for assetsSearchNormal
+  /// assets/search-normal.svg
+  static const String assetsSearchNormal = "assets/search-normal.svg";
+
+  /// Assets for assetsSetting4
+  /// assets/setting-4.svg
+  static const String assetsSetting4 = "assets/setting-4.svg";
+
+  /// Assets for assetsShoppingCarBoldt
+  /// assets/shopping-car_boldt.png
+  static const String assetsShoppingCarBoldt = "assets/shopping-car_boldt.png";
+
+  /// Assets for assetsShoppingCartOutline
+  /// assets/shopping-cart_outline.png
+  static const String assetsShoppingCartOutline = "assets/shopping-cart_outline.png";
+
+  /// Assets for assetsWatermilon2
+  /// assets/watermilon2.png
+  static const String assetsWatermilon2 = "assets/watermilon2.png";
 }
 
