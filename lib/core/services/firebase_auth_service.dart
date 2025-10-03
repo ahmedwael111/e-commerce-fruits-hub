@@ -137,4 +137,8 @@ class FirebaseAuthService {
      User? user = FirebaseAuth.instance.currentUser;
       await user?.delete();
   }
+  bool isUserLoggedIn() {
+    User? user = FirebaseAuth.instance.currentUser;
+    return user != null;
+  }
 }

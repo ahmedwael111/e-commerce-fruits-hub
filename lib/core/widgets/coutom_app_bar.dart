@@ -1,4 +1,5 @@
 import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
+import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/coustom_notfication_widget.dart';
 import 'package:e_commerce_fruits_hub/featurs/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 
@@ -22,5 +23,11 @@ AppBar coustomAppBar(BuildContext context, String title) {
         style: AppTextStyles.bold19,
       ),
     ),
+    actions: [
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: CoustomNotficationWidget(),
+      ),
+    ],
   );
 }

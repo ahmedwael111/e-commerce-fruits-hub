@@ -1,10 +1,13 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
+import 'package:e_commerce_fruits_hub/constants.dart';
 import 'package:e_commerce_fruits_hub/core/errors/exeptions.dart';
 import 'package:e_commerce_fruits_hub/core/errors/failuer.dart';
 import 'package:e_commerce_fruits_hub/core/services/database_service.dart';
 import 'package:e_commerce_fruits_hub/core/services/firebase_auth_service.dart';
+import 'package:e_commerce_fruits_hub/core/services/shared_prefrenseces_singleton.dart';
 import 'package:e_commerce_fruits_hub/core/utils/backend_endpoints_statics.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/domain/entities/user_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/data/models/user_model.dart';
@@ -66,7 +69,8 @@ class AuthRepoImplementation implements AuthRepo {
         email: email,
         password: password,
       );
-      var userEntity = await getUserData(uid: (await user).uid);
+      var userEntity = await getUserData(uid: (await user).uid); // get user data from database
+       saveUserDataToLocalPrefs(user: userEntity); // save user data to local prefs
       return right(userEntity);
     } on CoustomException catch (e) {
       log(
@@ -92,10 +96,14 @@ class AuthRepoImplementation implements AuthRepo {
         documenId: user!.uid,
       );
       if (isUserExist) {
-        userEntity = await getUserData(uid: user.uid); // get user from database if exist
+        userEntity = await getUserData(
+          uid: user.uid,
+        ); // get user from database if exist
       } else {
-        await addUser(user: userEntity);  // add user to database
-        userEntity = await getUserData(uid:  user.uid); // get user from database after adding
+        await addUser(user: userEntity); // add user to database
+        userEntity = await getUserData(
+          uid: user.uid,
+        ); // get user from database after adding
       }
       return right(userEntity);
     } on CoustomException catch (e) {
@@ -139,17 +147,23 @@ class AuthRepoImplementation implements AuthRepo {
   Future addUser({required UserEntity user}) async {
     await databaseService.saveData(
       path: BackendEndpointsStatics.addUserData,
-      data: user.toMap(),
+      data: UserModel.fromEntity(user).toMap(),
       documenId: user.id,
     );
   }
 
   @override
-  Future<UserEntity> getUserData({required String uid}) async {
+  Future<UserEntity> getUserData({required String uid}) async { // get user from database : now why not from local prefs : because user may login from another device , but when he try to login from another device the data will be fetched from database and saved to local prefs
     var userData = await databaseService.getData(
       path: BackendEndpointsStatics.getUserData,
       documenId: uid,
     );
     return UserModel.fromMap(userData);
+  }
+
+  @override
+  saveUserDataToLocalPrefs({required UserEntity user}) { // save user data to local prefs as json string
+    var jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
+    Prefs.setString(kUserDataKey, jsonData);
   }
 }

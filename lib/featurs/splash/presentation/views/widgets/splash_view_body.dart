@@ -1,4 +1,5 @@
 import 'package:e_commerce_fruits_hub/constants.dart';
+import 'package:e_commerce_fruits_hub/core/services/firebase_auth_service.dart';
 import 'package:e_commerce_fruits_hub/core/services/shared_prefrenseces_singleton.dart';
 import 'package:e_commerce_fruits_hub/core/utils/assets.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/sginin_view.dart';
@@ -41,7 +42,14 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     Future.delayed(const Duration(seconds: 3), () {
       bool condition = Prefs.getbool(kisOnBordingSeen);
       if (condition) {
-        Navigator.pushReplacementNamed(context, HomeView.routeName);
+        var loggedIn = FirebaseAuthService().isUserLoggedIn();
+        if (loggedIn) {
+          Navigator.pushReplacementNamed(context, SigninView.routeName);
+          return;
+        } else {
+          Navigator.pushReplacementNamed(context, SigninView.routeName);
+          return;
+        }
       } else {
         Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
       }
