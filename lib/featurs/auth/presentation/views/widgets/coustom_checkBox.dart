@@ -3,14 +3,14 @@ import 'package:e_commerce_fruits_hub/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CoustomCheckbook extends StatefulWidget {
-  const CoustomCheckbook({super.key, this.onChanged});
+class CoustomCheckbox extends StatefulWidget {
+  const CoustomCheckbox({super.key, this.onChanged});
   final ValueChanged<bool>? onChanged;
   @override
-  State<CoustomCheckbook> createState() => _CoustomCheckbookState();
+  State<CoustomCheckbox> createState() => _CoustomCheckboxState();
 }
 
-class _CoustomCheckbookState extends State<CoustomCheckbook> {
+class _CoustomCheckboxState extends State<CoustomCheckbox> {
   late bool isChecked = false;
 
   @override

@@ -139,6 +139,6 @@ class FirebaseAuthService {
   }
   bool isUserLoggedIn() {
     User? user = FirebaseAuth.instance.currentUser;
-    return user != null;
+    return user != null; 
   }
 }

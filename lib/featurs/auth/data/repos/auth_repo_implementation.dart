@@ -69,8 +69,12 @@ class AuthRepoImplementation implements AuthRepo {
         email: email,
         password: password,
       );
-      var userEntity = await getUserData(uid: (await user).uid); // get user data from database
-       saveUserDataToLocalPrefs(user: userEntity); // save user data to local prefs
+      var userEntity = await getUserData(
+        uid: (await user).uid,
+      ); // get user data from database
+      saveUserDataToLocalPrefs(
+        user: userEntity,
+      ); // save user data to local prefs
       return right(userEntity);
     } on CoustomException catch (e) {
       log(
@@ -99,14 +103,20 @@ class AuthRepoImplementation implements AuthRepo {
         userEntity = await getUserData(
           uid: user.uid,
         ); // get user from database if exist
+        saveUserDataToLocalPrefs(
+          user: userEntity,
+        ); // save user data to local prefs
       } else {
         await addUser(user: userEntity); // add user to database
         userEntity = await getUserData(
           uid: user.uid,
         ); // get user from database after adding
-      }
+        saveUserDataToLocalPrefs(
+          user: userEntity,
+        ); // save user data to local prefs
+      }  
       return right(userEntity);
-    } on CoustomException catch (e) {
+    } on CoustomException catch (e) { 
       if (user != null) {
         await _firebaseAuthService
             .deleteUser(); // delete user from firebase auth if there is an error
@@ -153,7 +163,8 @@ class AuthRepoImplementation implements AuthRepo {
   }
 
   @override
-  Future<UserEntity> getUserData({required String uid}) async { // get user from database : now why not from local prefs : because user may login from another device , but when he try to login from another device the data will be fetched from database and saved to local prefs
+  Future<UserEntity> getUserData({required String uid}) async {
+    // get user from database : now why not from local prefs : because user may login from another device , but when he try to login from another device the data will be fetched from database and saved to local prefs
     var userData = await databaseService.getData(
       path: BackendEndpointsStatics.getUserData,
       documenId: uid,
@@ -162,7 +173,8 @@ class AuthRepoImplementation implements AuthRepo {
   }
 
   @override
-  saveUserDataToLocalPrefs({required UserEntity user}) { // save user data to local prefs as json string
+  saveUserDataToLocalPrefs({required UserEntity user}) {
+    // save user data to local prefs as json string
     var jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
     Prefs.setString(kUserDataKey, jsonData);
   }

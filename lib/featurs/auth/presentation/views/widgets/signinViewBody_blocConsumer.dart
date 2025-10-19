@@ -2,7 +2,7 @@ import 'package:e_commerce_fruits_hub/core/widgets/coustom_progress_indicator.da
 import 'package:e_commerce_fruits_hub/core/widgets/snake_bar.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/presentation/cubits/sginin/signin_cubit.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/widgets/sginin_view_body.dart';
-import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/home_view.dart';
+import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +15,7 @@ class SgininViewBodyBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is SigninSuccess) {
           snakBar(context, 'تم تسجيل الدخول بنجاح ✅');
-          Navigator.pushNamed(context, HomeView.routeName);
+          Navigator.pushNamed(context, MainView.routeName);
         } else if (state is Signinfailure) {
           // Handle failure, e.g., show an error message
           snakBar(context, '${state.message} ❌');

@@ -1,5 +1,5 @@
 import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
-import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/widgets/coustom_checkBook.dart';
+import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/widgets/coustom_checkBox.dart';
 import 'package:flutter/material.dart';
 
 class TermsAndConditionsWidget extends StatelessWidget {
@@ -9,7 +9,7 @@ class TermsAndConditionsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CoustomCheckbook(onChanged: onChanged),
+        CoustomCheckbox(onChanged: onChanged ),
         SizedBox(width: 16),
         Flexible(
           child: Text.rich(
