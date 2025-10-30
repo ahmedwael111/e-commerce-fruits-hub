@@ -30,6 +30,10 @@ class Assets {
   /// assets/featured_background2.png
   static const String assetsFeaturedBackground2 = "assets/featured_background2.png";
 
+  /// Assets for assetsFilterTwo
+  /// assets/filterTwo.png
+  static const String assetsFilterTwo = "assets/filterTwo.png";
+
   /// Assets for assetsGoogleLogo
   /// assets/googleLogo.svg
   static const String assetsGoogleLogo = "assets/googleLogo.svg";
@@ -105,6 +109,10 @@ class Assets {
   /// Assets for assetsShoppingCartOutline
   /// assets/shopping-cart_outline.png
   static const String assetsShoppingCartOutline = "assets/shopping-cart_outline.png";
+
+  /// Assets for assetsTrash
+  /// assets/trash.png
+  static const String assetsTrash = "assets/trash.png";
 
   /// Assets for assetsWatermilon2
   /// assets/watermilon2.png

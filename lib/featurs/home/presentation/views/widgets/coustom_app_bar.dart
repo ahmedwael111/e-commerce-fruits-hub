@@ -22,7 +22,7 @@ class CoustomAppBar extends StatelessWidget {
           ),
         ),
         subtitle: Text(
-          getUserDataFromPrefs().name ?? '', // get user name from local prefs
+          getUserDataFromPrefs().name, // get user name from local prefs
           textAlign: TextAlign.right,
           style: AppTextStyles.bold16.copyWith(color: Colors.black),
         ),

@@ -9,13 +9,12 @@ class ProductModel {
   final num price;
   final String code;
   final bool isFeatured;
-  final File imageFile;
   final String? imageUrl;
   final num expirationMonth;
   final bool isOrganic;
   final int numberOfCalorys;
-  final num avrageRate = 0;
-  final num ratingCount = 0;
+  final num avrageRate;
+  final num ratingCount;
   final int unitAmount;
   final int sellingCount;
   final List<ReviewModel> reviews;
@@ -26,8 +25,9 @@ class ProductModel {
     required this.price,
     required this.code,
     required this.isFeatured,
-    required this.imageFile,
     this.imageUrl,
+    this.avrageRate = 0,
+    this.ratingCount = 0,
     required this.isOrganic,
     required this.expirationMonth,
     required this.numberOfCalorys,
@@ -42,31 +42,35 @@ class ProductModel {
       price: map['price'],
       code: map['code'],
       isFeatured: map['isFeatured'],
-      imageFile: map['imageFile'],
       imageUrl: map['imageUrl'],
       expirationMonth: map['expirationMonth'],
       isOrganic: map['isOrganic'],
       numberOfCalorys: map['numberOfCalorys'],
       unitAmount: map['unitAmount'],
-      reviews: map['reviews'].map((e) => ReviewModel.fromMap(e)).toList(),
-      sellingCount: map['sellingCount'],
+      reviews:
+          (map['reviews'] as List<dynamic>)
+              .map((e) => ReviewModel.fromMap(e))
+              .toList(),
+      sellingCount: map['sellingCount'] ?? 0,
+      avrageRate: map['avrageRate'],
+      ratingCount: map['ratingCount'],
     );
   }
   ProductEntity toEntity() {
-    return ProductEntity( 
+    return ProductEntity(
+      sellingCount: sellingCount,
       name: name,
       description: description,
       price: price,
       code: code,
       isFeatured: isFeatured,
-      imageFile: imageFile,
       imageUrl: imageUrl,
       expirationMonth: expirationMonth,
       isOrganic: isOrganic,
       numberOfCalorys: numberOfCalorys,
       unitAmount: unitAmount,
-      // avrageRate: avrageRate,
-      // ratingCount: ratingCount,
+      avrageRate: avrageRate,
+      ratingCount: ratingCount,
       reviews: reviews.map((e) => e.toEntity()).toList(),
     );
   }

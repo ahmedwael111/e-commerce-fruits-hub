@@ -5,8 +5,8 @@ import 'package:e_commerce_fruits_hub/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CoustomBottomNavBar extends StatefulWidget {
-  const CoustomBottomNavBar({super.key});
-
+  const CoustomBottomNavBar({super.key, required this.selectedIndexCallback});
+  final ValueChanged<int> selectedIndexCallback;
   @override
   State<CoustomBottomNavBar> createState() => _CoustomBottomNavBarState();
 }
@@ -45,6 +45,7 @@ class _CoustomBottomNavBarState extends State<CoustomBottomNavBar> {
                 onTap: () {
                   setState(() {
                     selectedIndex = index;
+                    widget.selectedIndexCallback(selectedIndex);
                   });
                 },
                 child: WhichBottomNavBarIconSelected(
@@ -64,7 +65,12 @@ class InActiveIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(image, scale: 3);
+    return Container(
+      height: 50,
+      width: 80,
+      color: Colors.transparent,
+      child: Image.asset(image, scale: 3),
+    );
   }
 }
 
@@ -132,19 +138,11 @@ class _WhichBottomNavBarIconSelectedState
     extends State<WhichBottomNavBarIconSelected> {
   @override
   Widget build(BuildContext context) {
-    return AnimatedCrossFade(
-      firstChild: ActiveIcon(
-        image: widget.bottomNavbarIconEntity.activeIcon,
-        text: widget.bottomNavbarIconEntity.name,
-      ),
-      secondChild: InActiveIcon(
-        image: widget.bottomNavbarIconEntity.inactiveIcon,
-      ),
-      crossFadeState:
-          widget.isSelected
-              ? CrossFadeState.showFirst
-              : CrossFadeState.showSecond,
-      duration: Duration(milliseconds: 10),
-    );
+    return widget.isSelected
+        ? ActiveIcon(
+          image: widget.bottomNavbarIconEntity.activeIcon,
+          text: widget.bottomNavbarIconEntity.name,
+        )
+        : InActiveIcon(image: widget.bottomNavbarIconEntity.inactiveIcon);
   }
 }

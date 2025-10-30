@@ -1,11 +1,12 @@
+import 'package:e_commerce_fruits_hub/core/entities/product_entity.dart';
 import 'package:e_commerce_fruits_hub/core/utils/app_colors.dart';
 import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
-import 'package:e_commerce_fruits_hub/core/utils/assets.dart';
+import 'package:e_commerce_fruits_hub/core/widgets/cached_netwok_image.dart';
 import 'package:flutter/material.dart';
 
 class FruitItem extends StatelessWidget {
-  const FruitItem({super.key});
-
+  const FruitItem({super.key, required this.product});
+  final ProductEntity product;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,15 +24,18 @@ class FruitItem extends StatelessWidget {
           Positioned.fill(
             child: Column(
               children: [
-                SizedBox(height: 8),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(Assets.assetsWatermilon2),
-                ),
-                SizedBox(height: 24),
+                SizedBox(height: 12),
+                product.imageUrl != null
+                    ? Flexible(
+                      fit: FlexFit.loose,
+                      child: CustomNetworkImage(imageUrl: product.imageUrl!),
+                    )
+                    : Container(color: Colors.grey, width: 100, height: 100),
+
+                SizedBox(height: 14),
                 ListTile(
                   title: Text(
-                    'بطيخ',
+                    product.name,
                     textAlign: TextAlign.right,
                     style: AppTextStyles.simibold13,
                   ),
@@ -39,7 +43,7 @@ class FruitItem extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: '20جنية ',
+                          text: ' ${product.price}جنية',
                           style: AppTextStyles.bold13.copyWith(
                             color: AppColors.secondaryColor /* Grayscale-900 */,
                           ),
