@@ -78,8 +78,8 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                 } else if (currentPage == 1) {
                   validateAddressSection();
                 } else {
-                  // var orderEntity = context.read<OrderEntity>();
-                  // context.read<AddOrderCubit>().addOrder(orderEntity);
+                  var orderEntity = context.read<OrderEntity>();
+                  context.read<AddOrderCubit>().addOrder(orderEntity);
                 }
               },
               text: getTexts(currentPage),
