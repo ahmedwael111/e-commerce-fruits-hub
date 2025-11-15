@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-class CoustomProgressIndicator extends StatelessWidget {
-  const CoustomProgressIndicator({
+class CoustomProgressIndicatorHud extends StatelessWidget {
+  const CoustomProgressIndicatorHud({
     super.key,
     required this.isLoad,
     required this.child,

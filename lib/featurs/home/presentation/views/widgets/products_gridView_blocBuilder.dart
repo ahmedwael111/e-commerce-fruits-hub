@@ -8,7 +8,6 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 class ProductsGridViewBlocBuilder extends StatelessWidget {
   const ProductsGridViewBlocBuilder({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductsCubit, ProductsState>(

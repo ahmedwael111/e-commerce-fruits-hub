@@ -20,7 +20,7 @@ class SignUpViewBodyBlocConsumer extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return CoustomProgressIndicator(
+        return CoustomProgressIndicatorHud(
           isLoad: state is SignupCubitLoading ? true : false,
           child: const SignupViewBody(),
         );

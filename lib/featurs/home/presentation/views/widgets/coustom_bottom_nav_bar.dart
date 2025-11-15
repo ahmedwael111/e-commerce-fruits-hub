@@ -36,7 +36,7 @@ class _CoustomBottomNavBarState extends State<CoustomBottomNavBar> {
         ],
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children:
             bottomNavbarIconList.asMap().entries.map((entry) {
               var index = entry.key;

@@ -15,7 +15,7 @@ class ProductsRepoImpl implements ProductsRepo {
     try {
       var data =
           await databaseService.getData(
-                path: BackendEndpointsStatics.products,
+                path: BackendEndpointsStatics.addproducts,
                 queryParam: {
                   'orderBy': 'sellingCount',
                   'limit': 10,
@@ -35,9 +35,11 @@ class ProductsRepoImpl implements ProductsRepo {
   Future<Either<Failuer, List<ProductEntity>>> getProducts() async {
     try {
       var data =
-          await databaseService.getData(path: BackendEndpointsStatics.products)
+          await databaseService.getData(
+                path: BackendEndpointsStatics.addproducts,
+              )
               as List<Map<String, dynamic>>;
-      List<ProductEntity> products =
+      List<ProductEntity> products = // map data to list of product entity
           data.map((e) => ProductModel.fromMap(e).toEntity()).toList();
       return right(products);
     } on Exception catch (e) {

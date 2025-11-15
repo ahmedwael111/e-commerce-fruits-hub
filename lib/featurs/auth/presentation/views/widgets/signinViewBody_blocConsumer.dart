@@ -22,7 +22,7 @@ class SgininViewBodyBlocConsumer extends StatelessWidget {
         }
       },
       builder:
-          (context, state) => CoustomProgressIndicator(
+          (context, state) => CoustomProgressIndicatorHud(
             isLoad: state is SigninLoading ? true : false,
             child: const SgininViewBody(),
           ),
