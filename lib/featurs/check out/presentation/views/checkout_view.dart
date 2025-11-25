@@ -23,12 +23,18 @@ class CheckoutView extends StatefulWidget {
 }
 
 class _CheckoutViewState extends State<CheckoutView> {
-  late OrderEntity orderEntity = OrderEntity(
-    // initialize order entity once because if i make hot reload initialize again will lose data
-    widget.cartEntity,
-    shippingAddressEntity: ShippingAddressEntity(),
-    uId: getUserDataFromPrefs().id,
-  );
+  late OrderEntity orderEntity;
+
+  @override
+  void initState() {
+    orderEntity = OrderEntity(
+      // initialize order entity once because if i make hot reload initialize again will lose data
+      widget.cartEntity,
+      shippingAddressEntity: ShippingAddressEntity(),
+      uId: getUserDataFromPrefs().id,
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -30,20 +30,23 @@ class FirebaseFirestorService implements DatabaseService {
       var requist = await firestore.collection(path).doc(documenId).get();
       return requist.data();
     } else {
-      Query<Map<String, dynamic>> data =  firestore.collection(path); // get list with filetration from firestore
+      Query<Map<String, dynamic>> data = firestore.collection(
+        path,
+      ); // get list with filetration from firestore
       if (queryParam != null) {
-        if (queryParam['orderBy'] != null) {  // 1) filtration befor 'get' data  
-          data =  data.orderBy(
+        if (queryParam['orderBy'] != null) {
+          // 1) filtration befor 'get' data
+          data = data.orderBy(
             queryParam['orderBy'],
             descending: queryParam['desc'],
           );
         }
-        if (queryParam['limit'] != null) {  // 2) filtration befor 'get' data
-          data =  data.limit(queryParam['limit']);
+        if (queryParam['limit'] != null) {
+          // 2) filtration befor 'get' data
+          data = data.limit(queryParam['limit']);
         }
-       
       }
-      var  requist = await  data.get(); // 3) get data
+      var requist = await data.get(); // 3) get data
       return requist.docs.map((e) => e.data()).toList();
     }
   }

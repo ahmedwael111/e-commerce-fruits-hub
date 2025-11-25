@@ -20,7 +20,7 @@ class FeaturedItemBottom extends StatelessWidget {
       ),
       onPressed: onPressed,
       child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 0),
+        padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 0),
 
         child: FittedBox(
           child: Text(

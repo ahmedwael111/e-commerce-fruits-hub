@@ -1,10 +1,9 @@
-
 import 'package:e_commerce_fruits_hub/core/entities/product_entity.dart';
 
 ProductEntity dummyProduct() {
   return ProductEntity(
-    avrageRate:  0,
-    ratingCount:  0,
+    avrageRate: 0,
+    ratingCount: 0,
     sellingCount: 0,
     name: 'dummyProduct',
     description: 'dummyProduct',

@@ -15,7 +15,7 @@ class PaymentSection extends StatelessWidget {
         SizedBox(height: 24),
         OrderSummaryWidget(), // ملخص الطلب : i extract this becuse if i want to sent data to it
         SizedBox(height: 16),
-        ShowAdressWidget(  pageController: pageController,), // عنوان التوصيل :
+        ShowAdressWidget(pageController: pageController), // عنوان التوصيل :
       ],
     );
   }

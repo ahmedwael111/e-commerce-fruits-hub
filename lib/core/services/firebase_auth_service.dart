@@ -133,12 +133,14 @@ class FirebaseAuthService {
       facebookAuthCredential,
     )).user!;
   }
+
   Future<void> deleteUser() async {
-     User? user = FirebaseAuth.instance.currentUser;
-      await user?.delete();
+    User? user = FirebaseAuth.instance.currentUser;
+    await user?.delete();
   }
+
   bool isUserLoggedIn() {
     User? user = FirebaseAuth.instance.currentUser;
-    return user != null; 
+    return user != null;
   }
 }

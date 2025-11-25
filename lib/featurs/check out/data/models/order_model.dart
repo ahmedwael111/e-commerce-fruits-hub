@@ -18,7 +18,8 @@ class OrderModel {
     required this.paymentMethod,
   });
 
-  factory OrderModel.fromEntity(OrderEntity orderEntity) => OrderModel( // this is the model that will be sent to the server 
+  factory OrderModel.fromEntity(OrderEntity orderEntity) => OrderModel(
+    // this is the model that will be sent to the server
     uId: orderEntity.uId,
     totalPrice: orderEntity.cartEntity.calculateTotalCartPrice(),
     shippingAddressModel: ShippingAddressModel.fromEntity(
@@ -32,6 +33,9 @@ class OrderModel {
   );
   toJson() => {
     'uId': uId,
+    'state': 'Pending',
+    'date': DateTime.now().toString(),
+
     'totalPrice': totalPrice,
     'shippingAddressModel': shippingAddressModel.toJson(),
     'orderProductModelList':

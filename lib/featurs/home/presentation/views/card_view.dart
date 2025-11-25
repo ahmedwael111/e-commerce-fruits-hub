@@ -8,8 +8,9 @@ class CardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider (
+    return BlocProvider(
       create: (context) => CartItemCubit(),
-      child: CardViewBody());
+      child: CardViewBody(),
+    );
   }
 }

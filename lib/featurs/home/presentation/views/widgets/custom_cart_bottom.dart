@@ -16,8 +16,11 @@ class CustomCartBottom extends StatelessWidget {
         return CoustomBottom(
           onPressed: () {
             if (context.read<CartCubit>().cartEntity.cardItems.isNotEmpty) {
-              Navigator.pushNamed(context, CheckoutView.routeName ,
-               arguments: context.read<CartCubit>().cartEntity);
+              Navigator.pushNamed(
+                context,
+                CheckoutView.routeName,
+                arguments: context.read<CartCubit>().cartEntity,
+              );
             } else {
               snakBar(context, 'السلة فارغة');
             }

@@ -17,9 +17,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case CheckoutView.routeName:
       return MaterialPageRoute(
         builder:
-            (_) => CheckoutView(
-              cartEntity: settings.arguments as CartEntity,
-            ),
+            (_) => CheckoutView(cartEntity: settings.arguments as CartEntity),
       );
 
     case OnBoardingView.routeName:

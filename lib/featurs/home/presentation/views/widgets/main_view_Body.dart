@@ -16,5 +16,3 @@ class MainViewBody extends StatelessWidget {
     return MainViewBodyBlocListener(selectedIndex: selectedIndex, pages: pages);
   }
 }
-
-

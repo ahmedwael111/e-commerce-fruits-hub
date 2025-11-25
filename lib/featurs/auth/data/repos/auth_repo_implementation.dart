@@ -114,9 +114,9 @@ class AuthRepoImplementation implements AuthRepo {
         saveUserDataToLocalPrefs(
           user: userEntity,
         ); // save user data to local prefs
-      }  
+      }
       return right(userEntity);
-    } on CoustomException catch (e) { 
+    } on CoustomException catch (e) {
       if (user != null) {
         await _firebaseAuthService
             .deleteUser(); // delete user from firebase auth if there is an error

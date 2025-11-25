@@ -3,7 +3,12 @@ import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class StepItemSwitcher extends StatelessWidget {
-  const StepItemSwitcher({super.key, required this.text, required this.index, required this.isActive});
+  const StepItemSwitcher({
+    super.key,
+    required this.text,
+    required this.index,
+    required this.isActive,
+  });
   final String text, index;
   final bool isActive;
   @override

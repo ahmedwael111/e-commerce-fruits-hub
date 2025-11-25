@@ -21,10 +21,7 @@ class ProductsHeader extends StatelessWidget {
         ),
         Spacer(),
         GestureDetector(
-          onTap: () {
-            
-            
-          },
+          onTap: () {},
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: ShapeDecoration(

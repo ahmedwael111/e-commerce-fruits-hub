@@ -70,5 +70,3 @@ class _ProductViewBodyState extends State<ProductViewBody> {
     );
   }
 }
-
-

@@ -8,9 +8,12 @@ sealed class AddOrderState extends Equatable {
 }
 
 final class AddOrderInitial extends AddOrderState {}
+
 final class AddOrderLoading extends AddOrderState {}
+
 final class AddOrderSuccess extends AddOrderState {}
-final class AddOrderFailure extends AddOrderState { 
+
+final class AddOrderFailure extends AddOrderState {
   final Failuer errMessage;
   const AddOrderFailure(this.errMessage);
 }

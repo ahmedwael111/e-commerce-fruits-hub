@@ -2,21 +2,20 @@ import 'package:e_commerce_fruits_hub/core/utils/app_colors.dart';
 import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
-
-
 class ShippingItem extends StatelessWidget {
   const ShippingItem({
     super.key,
     required this.title,
     required this.subtitle,
     required this.price,
-    this.onTap, required this.isSelected,
+    this.onTap,
+    required this.isSelected,
   });
   final String title;
   final String subtitle;
   final String price;
-  final VoidCallback ? onTap;
-  final bool isSelected ;
+  final VoidCallback? onTap;
+  final bool isSelected;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -62,7 +61,7 @@ class ShippingItem extends StatelessWidget {
                   SizedBox(
                     width: 200,
                     child: Text(
-                    subtitle,
+                      subtitle,
                       textAlign: TextAlign.right,
                       style: AppTextStyles.regular13.copyWith(
                         color: Colors.black.withValues(alpha: 0.50),

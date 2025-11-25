@@ -1,4 +1,3 @@
-
 import 'package:e_commerce_fruits_hub/core/entities/review_entity.dart';
 
 class ReviewModel {
@@ -7,7 +6,6 @@ class ReviewModel {
   final String date;
   final num rating;
   final String image;
-  
 
   ReviewModel({
     required this.name,
@@ -16,8 +14,14 @@ class ReviewModel {
     required this.rating,
     required this.image,
   });
-  factory ReviewModel.fromEntity(ReviewEntity entity){
-    return ReviewModel(name: entity.name, review: entity.review, date: entity.date, rating: entity.rating, image: entity.image);
+  factory ReviewModel.fromEntity(ReviewEntity entity) {
+    return ReviewModel(
+      name: entity.name,
+      review: entity.review,
+      date: entity.date,
+      rating: entity.rating,
+      image: entity.image,
+    );
   }
   factory ReviewModel.fromMap(Map<String, dynamic> map) {
     return ReviewModel(
@@ -37,6 +41,7 @@ class ReviewModel {
       image: image,
     );
   }
+
   Map<String, dynamic> toMap() {
     return {
       'name': name,

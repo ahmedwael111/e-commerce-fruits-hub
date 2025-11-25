@@ -71,7 +71,7 @@ class FruitItem extends StatelessWidget {
                     textAlign: TextAlign.right,
                   ),
                   trailing: GestureDetector(
-                    onTap: () { 
+                    onTap: () {
                       context.read<CartCubit>().addToCart(product);
                     },
                     child: Container(

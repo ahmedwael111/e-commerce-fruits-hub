@@ -1,4 +1,3 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_fruits_hub/core/errors/failuer.dart';
 import 'package:e_commerce_fruits_hub/core/repos/orders_repo/orders_repo.dart';
@@ -10,9 +9,9 @@ import 'package:e_commerce_fruits_hub/featurs/check%20out/domain/entitys/order_e
 class OrdersReopImpl implements OrdersRepo {
   final DatabaseService databaseService;
 
-  OrdersReopImpl({ required this.databaseService});
+  OrdersReopImpl({required this.databaseService});
   @override
-  Future<Either<Failuer, void>> addOrder(OrderEntity orderEntity)  async{
+  Future<Either<Failuer, void>> addOrder(OrderEntity orderEntity) async {
     try {
       databaseService.saveData(
         path: BackendEndpointsStatics.addOrder,

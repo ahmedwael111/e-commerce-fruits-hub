@@ -3,7 +3,12 @@ import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/co
 import 'package:e_commerce_fruits_hub/featurs/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 
-AppBar coustomAppBar( {required BuildContext context, required String title, bool showNotficationWidget = true , bool backButtonShow = false}) {
+AppBar coustomAppBar({
+  required BuildContext context,
+  required String title,
+  bool showNotficationWidget = true,
+  bool backButtonShow = false,
+}) {
   return AppBar(
     backgroundColor: Colors.white,
     leading: Visibility(

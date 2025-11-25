@@ -8,10 +8,11 @@ class StepsList extends StatelessWidget {
   const StepsList({
     super.key,
     required this.currentpage,
-    required this.pageController,
+    required this.pageController, required this.ontap,
   });
   final int currentpage;
   final PageController pageController;
+  final ValueChanged<int> ontap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,16 +20,7 @@ class StepsList extends StatelessWidget {
         return Expanded(
           child: GestureDetector(
             onTap: () {
-              if (context.read<OrderEntity>().isPayCash != null) {
-                pageController.animateToPage(
-                  //
-                  index,
-                  duration: Duration(milliseconds: 300),
-                  curve: Curves.easeIn,
-                );
-              } else {
-                snakBar(context, ' يرجي تحديد طريقة الدفع');
-              }
+              ontap(index);
             },
             child: StepItemSwitcher(
               isActive:

@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 
 class CardItemEntity extends Equatable {
   final ProductEntity productEntity;
-  int quantity ;
+  int quantity;
 
   CardItemEntity({required this.productEntity, this.quantity = 0});
 
@@ -24,7 +24,7 @@ class CardItemEntity extends Equatable {
       quantity--;
     }
   }
-  
+
   @override
   // TODO: implement props
   List<Object?> get props => [productEntity];

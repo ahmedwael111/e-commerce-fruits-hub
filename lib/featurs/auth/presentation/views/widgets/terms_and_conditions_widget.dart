@@ -9,7 +9,7 @@ class TermsAndConditionsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CoustomCheckbox(onChanged: onChanged ),
+        CoustomCheckbox(onChanged: onChanged),
         SizedBox(width: 16),
         Flexible(
           child: Text.rich(
