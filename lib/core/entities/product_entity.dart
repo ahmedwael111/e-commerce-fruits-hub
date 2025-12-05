@@ -3,10 +3,11 @@ import 'dart:io';
 import 'package:e_commerce_fruits_hub/core/entities/review_entity.dart';
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class ProductEntity extends Equatable {
   final String name;
   final String description;
-  final num price;
+  final double price;
   final String code;
   final bool isFeatured;
   String? imageUrl;

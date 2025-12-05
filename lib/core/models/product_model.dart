@@ -6,7 +6,7 @@ import 'package:e_commerce_fruits_hub/core/models/review_model.dart';
 class ProductModel {
   final String name;
   final String description;
-  final num price;
+  final double price;
   final String code;
   final bool isFeatured;
   final String? imageUrl;

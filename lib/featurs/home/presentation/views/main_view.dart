@@ -4,6 +4,7 @@ import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/products_v
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/coustom_bottom_nav_bar.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/home_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/main_view_Body.dart';
+import 'package:e_commerce_fruits_hub/featurs/profile/presentation/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +22,7 @@ class _MainViewState extends State<MainView> {
     HomeView(),
     ProductsView(),
     CardView(),
-    Placeholder(),
+    ProfileView(),
   ];
   @override
   Widget build(BuildContext context) {

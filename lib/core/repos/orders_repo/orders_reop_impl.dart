@@ -13,9 +13,11 @@ class OrdersReopImpl implements OrdersRepo {
   @override
   Future<Either<Failuer, void>> addOrder(OrderEntity orderEntity) async {
     try {
+      var orderModel = OrderModel.fromEntity(orderEntity);
       databaseService.saveData(
         path: BackendEndpointsStatics.addOrder,
-        data: OrderModel.fromEntity(orderEntity).toJson(),
+        documenId: orderModel.orderId, // use order id as document id
+        data: orderModel.toJson(),
       ); // there i use order model becuse repo imple used in data layer .
       return Right(null);
     } on Exception catch (e) {
