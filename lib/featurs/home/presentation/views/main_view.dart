@@ -1,9 +1,11 @@
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/card_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/products_view.dart';
+import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/Main_view_body_with_bersistent_navBar.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/coustom_bottom_nav_bar.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/home_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/main_view_Body.dart';
+import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/persistent_nav_bar.dart';
 import 'package:e_commerce_fruits_hub/featurs/profile/presentation/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,18 +30,28 @@ class _MainViewState extends State<MainView> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CartCubit(),
-      child: Scaffold(
-        bottomNavigationBar: CoustomBottomNavBar(
-          selectedIndexCallback: (index) {
-            setState(() {
-              selectedIndex = index;
-            });
-          },
-        ),
-        body: SafeArea(
-          child: MainViewBody(selectedIndex: selectedIndex, pages: pages),
-        ),
-      ),
+      child: Scaffold(body: MainViewBodyWithPersistentNaveBar()),
+      // this PersistentNavBar uses persistent_bottom_nav_bar package its handling the bottom nav bar and the page switching with state retention all in one widget
     );
   }
 }
+
+
+
+
+
+// return BlocProvider(
+//       create: (context) => CartCubit(),
+//       child: Scaffold(
+//         bottomNavigationBar: CoustomBottomNavBar(
+//           selectedIndexCallback: (index) {
+//             setState(() {
+//               selectedIndex = index;
+//             });
+//           },
+//         ),
+//         body: SafeArea(
+//           child: MainViewBody(selectedIndex: selectedIndex, pages: pages),
+//         ),
+//       ),
+//     );

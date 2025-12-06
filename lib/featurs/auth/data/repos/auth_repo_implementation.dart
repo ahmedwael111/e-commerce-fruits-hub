@@ -34,7 +34,12 @@ class AuthRepoImplementation implements AuthRepo {
         password: password,
         name: name,
       );
-      var userEntity = UserEntity(id: user.uid, name: name, email: email);
+      var userEntity = UserEntity(
+        id: user.uid,
+        name: name,
+        email: email,
+        imageUrl: user.photoURL ?? '',
+      );
 
       await addUser(user: userEntity); // add user to database
       return right(userEntity);

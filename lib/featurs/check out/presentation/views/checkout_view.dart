@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 
 class CheckoutView extends StatefulWidget {
   const CheckoutView({super.key, required this.cartEntity});
-  static const String routeName = '/checkout_view';
+  static const String routeName = 'checkout_view';
   final CartEntity
   cartEntity; // i use cart entity because its have List<CartItmeEntity> and methods of it dirictlly
   @override

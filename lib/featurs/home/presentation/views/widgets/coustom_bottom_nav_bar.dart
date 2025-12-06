@@ -36,7 +36,7 @@ class _CoustomBottomNavBarState extends State<CoustomBottomNavBar> {
         ],
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children:
             bottomNavbarIconList.asMap().entries.map((entry) {
               var index = entry.key;
@@ -48,9 +48,11 @@ class _CoustomBottomNavBarState extends State<CoustomBottomNavBar> {
                     widget.selectedIndexCallback(selectedIndex);
                   });
                 },
-                child: WhichBottomNavBarIconSelected(
-                  isSelected: selectedIndex == index,
-                  bottomNavbarIconEntity: value,
+                child: Flexible(
+                  child: WhichBottomNavBarIconSelected(
+                    isSelected: selectedIndex == index,
+                    bottomNavbarIconEntity: value,
+                  ),
                 ),
               );
             }).toList(),
@@ -81,7 +83,7 @@ class ActiveIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 300),
+      duration: Duration(milliseconds: 900),
 
       decoration: ShapeDecoration(
         color: const Color(0xFFEEEEEE),

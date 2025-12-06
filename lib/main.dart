@@ -4,6 +4,7 @@ import 'package:e_commerce_fruits_hub/core/services/bloc_observer.dart';
 import 'package:e_commerce_fruits_hub/core/services/get_it_server_locator.dart';
 import 'package:e_commerce_fruits_hub/core/services/shared_prefrenseces_singleton.dart';
 import 'package:e_commerce_fruits_hub/core/utils/app_colors.dart';
+import 'package:e_commerce_fruits_hub/core/utils/dark_theme_cubite.dart';
 import 'package:e_commerce_fruits_hub/featurs/splash/presentation/views/splash_view.dart';
 import 'package:e_commerce_fruits_hub/firebase_options.dart';
 import 'package:e_commerce_fruits_hub/generated/l10n.dart';
@@ -20,7 +21,14 @@ void main() async {
   setupGetIt();
   Bloc.observer = AppBlocObserver();
   runApp(
-    DevicePreview(enabled: false, builder: (context) => const FruitsHubApp()),
+    DevicePreview(
+      enabled: false,
+      builder:
+          (context) => BlocProvider(
+            create: (context) => ThemeCubitCubit(),
+            child: const FruitsHubApp(),
+          ),
+    ),
   );
 }
 
@@ -29,26 +37,33 @@ class FruitsHubApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // locale: DevicePreview.locale(context),
-      // builder: DevicePreview.appBuilder,
-      onGenerateRoute: generateRoute,
-      initialRoute: SplashView.routeName,
-      localizationsDelegates: [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      locale: const Locale('ar'),
-      theme: ThemeData(
-        textTheme: GoogleFonts.cairoTextTheme(),
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
-        scaffoldBackgroundColor: Colors.white,
-      ),
+    return BlocBuilder<ThemeCubitCubit, ThemeData>(
+      builder: (context, state) {
+        return MaterialApp(
+          // locale: DevicePreview.locale(context),
+          // builder: DevicePreview.appBuilder,
+          onGenerateRoute: generateRoute,
+          initialRoute: SplashView.routeName,
+          localizationsDelegates: [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+          locale: const Locale('ar'),
+          // theme: state, // get from cubit to dark and light mode
+          theme: ThemeData(
+            textTheme: GoogleFonts.cairoTextTheme(),
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: AppColors.primaryColor,
+            ),
+            scaffoldBackgroundColor: Colors.white,
+          ),
 
-      debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: false,
+        );
+      },
     );
   }
 }

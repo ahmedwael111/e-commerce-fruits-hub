@@ -7,6 +7,7 @@ import 'package:e_commerce_fruits_hub/featurs/home/domin/entitis/cart_entity.dar
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/main_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/products_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/on_boarding/presentation/views/on_boarding_view.dart';
+import 'package:e_commerce_fruits_hub/featurs/profile/presentation/views/my_orders_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/profile/presentation/views/profile_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const OnBoardingView());
     case ProfileView.routeName:
       return MaterialPageRoute(builder: (_) => const ProfileView());
+    case MyOrdersView.routeName:
+      return MaterialPageRoute(builder: (_) => const MyOrdersView());
     case BestSellingView.routeName:
       return MaterialPageRoute(builder: (_) => const BestSellingView());
     case ProductsView.routeName:

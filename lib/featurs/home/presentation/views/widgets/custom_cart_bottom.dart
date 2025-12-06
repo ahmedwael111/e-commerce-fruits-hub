@@ -5,6 +5,7 @@ import 'package:e_commerce_fruits_hub/featurs/home/presentation/cubits/cart_item
 import 'package:e_commerce_fruits_hub/featurs/on_boarding/presentation/views/widgets/coustom_bottom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class CustomCartBottom extends StatelessWidget {
   const CustomCartBottom({super.key});
@@ -16,10 +17,13 @@ class CustomCartBottom extends StatelessWidget {
         return CoustomBottom(
           onPressed: () {
             if (context.read<CartCubit>().cartEntity.cardItems.isNotEmpty) {
-              Navigator.pushNamed(
+              PersistentNavBarNavigator.pushNewScreen(
                 context,
-                CheckoutView.routeName,
-                arguments: context.read<CartCubit>().cartEntity,
+                pageTransitionAnimation: PageTransitionAnimation.fade,
+                screen: CheckoutView(
+                  cartEntity: context.read<CartCubit>().cartEntity,
+                ),
+                withNavBar: true, // لو صفحة checkout fullscreen مش عايز navBar
               );
             } else {
               snakBar(context, 'السلة فارغة');

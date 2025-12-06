@@ -1,5 +1,11 @@
+import 'package:e_commerce_fruits_hub/constants.dart';
+import 'package:e_commerce_fruits_hub/core/utils/app_colors.dart';
 import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
 import 'package:e_commerce_fruits_hub/core/utils/assets.dart';
+import 'package:e_commerce_fruits_hub/featurs/profile/domain/entitiys/profile_list_view_entity.dart';
+import 'package:e_commerce_fruits_hub/featurs/profile/presentation/views/widgets/log_out_widget.dart';
+import 'package:e_commerce_fruits_hub/featurs/profile/presentation/views/widgets/profile_list_tile.dart';
+import 'package:e_commerce_fruits_hub/featurs/profile/presentation/views/widgets/profile_list_view_item.dart';
 import 'package:flutter/material.dart';
 
 class ProfileViewBody extends StatelessWidget {
@@ -7,85 +13,39 @@ class ProfileViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ProfileListTile(),
-      ],
-    );
-  }
-}
-
-class ProfileListTile extends StatelessWidget {
-  const ProfileListTile({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 100,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+      child: Column(
         children: [
-          CoustomProfileAvatar(),
-          SizedBox(width: 20),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 30),
-              Text('أحمد ياسر', style: AppTextStyles.bold13),
-              SizedBox(height: 5),
-              Text(
-                'mail@mail.com',
-                style: AppTextStyles.regular13.copyWith(
-                  color: const Color(0xFF888FA0),
-                ),
-              ),
-              SizedBox(height: 20),
-            ],
+          FractionallySizedBox(widthFactor: 1.08, child: ProfileListTile()),
+          SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [Text('عام', style: AppTextStyles.simibold13)],
           ),
+          SizedBox(height: 16),
+          ProfileListView(profileItem: profileListViewEntity),
+          SizedBox(height: 22),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [Text('المساعده', style: AppTextStyles.simibold13)],
+          ),
+          SizedBox(height: 16),
+          ProfileListViewItem(
+            profileItem: ProfileListViewEntity(
+              leading: Assets.assetsInfoCircle,
+              title: 'من نحن',
+              trailing: const Icon(Icons.arrow_forward_ios, size: 22),
+            ),
+          ),
+          Divider(color: Color(0xFFE8E8E8), thickness: 1),
+          const Spacer(),
+          FractionallySizedBox(widthFactor: 1.08, child: LogOutProfileWidget()),
+          SizedBox(height: 33),
         ],
       ),
     );
   }
 }
 
-class CoustomProfileAvatar extends StatelessWidget {
-  const CoustomProfileAvatar({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          width: 93,
-          height: 93,
-          decoration: BoxDecoration(
-            color: Colors.red,
-            border: Border.all(width: 13, color: Colors.white),
-            borderRadius: BorderRadius.circular(50),
-          ),
-          child: Image.asset(Assets.assetsProfile),
-        ),
-        Positioned(
-          bottom: 0,
-          right: 30.5,
-          left: 30.5,
-          child: Container(
-            width: 32,
-            height: 32,
-            decoration: BoxDecoration(
-              color: const Color(0xFFF8F8F8),
-              border: Border.all(width: 2, color: Colors.white),
-              borderRadius: BorderRadius.circular(50),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Image.asset(Assets.assetsCamera),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}

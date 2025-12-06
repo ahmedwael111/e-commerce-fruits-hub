@@ -48,11 +48,13 @@ dependencies:
   flutter_paypal_payment: ^1.0.8
   flutter_svg: ^2.2.0
   flutter_svg_provider: ^1.0.7
+  flutter_switch: ^0.3.2
   get_it: ^8.2.0
   google_fonts: ^6.2.1
   google_nav_bar: ^5.0.7
   google_sign_in: ^6.2.1
   modal_progress_hud_nsn: ^0.5.1
+  persistent_bottom_nav_bar: ^6.2.1
   provider: ^6.1.5+1
   shared_preferences: ^2.5.3
   skeletonizer: ^1.4.3
