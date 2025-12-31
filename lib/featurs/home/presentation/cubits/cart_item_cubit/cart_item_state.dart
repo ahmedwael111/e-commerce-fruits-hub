@@ -7,6 +7,6 @@ sealed class CartItemState {
 final class CartItemInitial extends CartItemState {}
 
 final class CartItemUpdated extends CartItemState {
-  final CardItemEntity cartItemEntity;
-  const CartItemUpdated(this.cartItemEntity);
+  final CardItemEntity? cartItemEntity;
+  const CartItemUpdated( {this.cartItemEntity} );
 }

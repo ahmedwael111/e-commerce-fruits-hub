@@ -1,6 +1,7 @@
 import 'package:e_commerce_fruits_hub/core/cubits/products/products_cubit.dart';
 import 'package:e_commerce_fruits_hub/core/helper_functions.dart/dummy_products.dart';
 import 'package:e_commerce_fruits_hub/core/widgets/failuer_message.dart';
+import 'package:e_commerce_fruits_hub/core/widgets/snake_bar.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/products_gridview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

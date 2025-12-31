@@ -1,13 +1,13 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_fruits_hub/core/services/database_service.dart';
-import 'package:e_commerce_fruits_hub/featurs/auth/data/models/user_model.dart';
-import 'package:e_commerce_fruits_hub/featurs/auth/domain/entities/user_entity.dart';
 
 class FirebaseFirestorService implements DatabaseService {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   @override
   @override
-  Future<void> saveData({
+  Future<void> addData({
     required String path,
     required Map<String, dynamic> data,
     String? documenId,
@@ -17,6 +17,46 @@ class FirebaseFirestorService implements DatabaseService {
     } else {
       await firestore.collection(path).doc(documenId).set(data);
     }
+  }
+
+  @override
+  Future<void> updateData({
+    required String path,
+    required Map<String, dynamic> data,
+    required String documenId,
+  }) async {
+    await firestore.collection(path).doc(documenId).update(data);
+  }
+
+  @override
+  Future<void> addDataToCollectionInDocument({
+    required String path,
+    required Map<String, dynamic> data,
+    required String? documenId,
+    required String subCollectionPath,
+    required String docIdOfSubCollection,
+  }) async {
+    await firestore
+        .collection(path)
+        .doc(documenId)
+        .collection(subCollectionPath)
+        .doc(docIdOfSubCollection)
+        .set(data);
+  }
+
+  @override
+  Future<void> deleteDataToCollectionInDocument({
+    required String path,
+    required String? documenId,
+    required String subCollectionPath,
+    required String docIdOfSubCollection,
+  }) async {
+    await firestore
+        .collection(path)
+        .doc(documenId)
+        .collection(subCollectionPath)
+        .doc(docIdOfSubCollection)
+        .delete();
   }
 
   @override
@@ -58,5 +98,83 @@ class FirebaseFirestorService implements DatabaseService {
   }) {
     var doc = firestore.collection(path).doc(documenId).get();
     return doc.then((value) => value.exists);
+  }
+
+  @override
+  Stream streamData({
+    required String path,
+    Map<String, dynamic>? queryParam,
+  }) async* {
+    //
+    Query<Map<String, dynamic>> data = firestore.collection(
+      path,
+    ); // get list with filetration from firestore
+    if (queryParam != null) {
+      if (queryParam['orderBy'] != null) {
+        // 1) filtration befor 'get' data
+        data = data.orderBy(
+          queryParam['orderBy'],
+          descending: queryParam['desc'],
+        );
+      }
+      if (queryParam['limit'] != null) {
+        // 2) filtration befor 'get' data
+        data = data.limit(queryParam['limit']);
+      }
+      if (queryParam['isFav'] != null) {
+        data = data.where(
+          'isFav',
+          isEqualTo: queryParam['isFav'],
+        ); // filter on spesific element
+      }
+    }
+    await for (var result in data.snapshots()) {
+      log('STREAM UPDATE: ${result.docs.length}');
+
+      // 'await for' its insted "listen"  that work with streams using snapshots
+      yield result.docs.map((e) => e.data()).toList();
+    }
+  }
+
+  @override
+  Stream streamDataFromCollectionWithInDocument({
+    required String path,
+    // required Map<String, dynamic> data,
+    Map<String, dynamic>? queryParam,
+    required String? documenId,
+    required String subCollectionPath,
+    // required String docIdOfSubCollection,
+  }) async* {
+    Query<Map<String, dynamic>> data = firestore
+        .collection(path)
+        .doc(documenId)
+        .collection(
+          subCollectionPath,
+        ); // get list with filetration from firestore
+    if (queryParam != null) {
+      if (queryParam['orderBy'] != null) {
+        // 1) filtration befor 'get' data
+        data = data.orderBy(
+          queryParam['orderBy'],
+          descending: queryParam['desc'],
+        );
+      }
+      if (queryParam['limit'] != null) {
+        // 2) filtration befor 'get' data
+        data = data.limit(queryParam['limit']);
+      }
+      if (queryParam['isFav'] != null) {
+        data = data.where(
+          'isFav',
+          isEqualTo: queryParam['isFav'],
+        ); // filter on spesific element
+      }
+    }
+    await for (var result in data.snapshots()) {
+      log('STREAM UPDATE: ${result.docs.length}');
+
+      // 'await for' its insted "listen"  that work with streams using snapshots
+      yield result.docs.map((e) => e.data()).toList();
+    }
   }
 }

@@ -11,6 +11,7 @@ class FeaturedItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return AspectRatio(
       aspectRatio: 342 / 158,
 
@@ -44,7 +45,7 @@ class FeaturedItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 35),
+                    Flexible(child: SizedBox(height: 35)),
                     Opacity(
                       opacity: 0.80,
                       child: Text(
@@ -61,7 +62,7 @@ class FeaturedItem extends StatelessWidget {
                     ),
                     SizedBox(height: 7),
                     FeaturedItemBottom(onPressed: () {}, text: 'تسوق الان'),
-                    SizedBox(height: 30),
+                    Flexible(child: SizedBox(height: 30)),
                   ],
                 ),
               ),

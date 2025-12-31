@@ -7,7 +7,7 @@ class ProductModel {
   final String name;
   final String description;
   final double price;
-  final String code;
+  final String productId;
   final bool isFeatured;
   final String? imageUrl;
   final num expirationMonth;
@@ -17,13 +17,14 @@ class ProductModel {
   final num ratingCount;
   final int unitAmount;
   final int sellingCount;
+  
   final List<ReviewModel> reviews;
 
   ProductModel({
     required this.name,
     required this.description,
     required this.price,
-    required this.code,
+    required this.productId,
     required this.isFeatured,
     this.imageUrl,
     this.avrageRate = 0,
@@ -39,8 +40,11 @@ class ProductModel {
     return ProductModel(
       name: map['name'],
       description: map['description'],
-      price: map['price'],
-      code: map['code'],
+      price:
+          (map['price'] is int)
+              ? (map['price'] as int).toDouble()
+              : map['price'] as double,
+      productId: map['productId'],
       isFeatured: map['isFeatured'],
       imageUrl: map['imageUrl'],
       expirationMonth: map['expirationMonth'],
@@ -56,13 +60,31 @@ class ProductModel {
       ratingCount: map['ratingCount'],
     );
   }
+  factory ProductModel.fromEntity(ProductEntity entity) {
+    return ProductModel(
+      name: entity.name,
+      description: entity.description,
+      price: entity.price,
+      productId: entity.productId,
+      isFeatured: entity.isFeatured,
+      imageUrl: entity.imageUrl,
+      expirationMonth: entity.expirationMonth,
+      isOrganic: entity.isOrganic,
+      numberOfCalorys: entity.numberOfCalorys,
+      unitAmount: entity.unitAmount,
+      avrageRate: entity.avrageRate,
+      ratingCount: entity.ratingCount,
+      reviews: entity.reviews.map((e) => ReviewModel.fromEntity(e)).toList(),
+      sellingCount: entity.sellingCount,
+    );
+  }
   ProductEntity toEntity() {
     return ProductEntity(
       sellingCount: sellingCount,
       name: name,
       description: description,
       price: price,
-      code: code,
+      productId: productId,
       isFeatured: isFeatured,
       imageUrl: imageUrl,
       expirationMonth: expirationMonth,
@@ -80,7 +102,7 @@ class ProductModel {
       'name': name,
       'description': description,
       'price': price,
-      'code': code,
+      'code': productId,
       'isFeatured': isFeatured,
       'imageUrl': imageUrl,
       'expirationMonth': expirationMonth,

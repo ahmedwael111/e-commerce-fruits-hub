@@ -2,7 +2,7 @@ import 'package:e_commerce_fruits_hub/core/services/get_it_server_locator.dart';
 import 'package:e_commerce_fruits_hub/core/widgets/coutom_app_bar.dart';
 import 'package:e_commerce_fruits_hub/core/widgets/snake_bar.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/domain/repos/auth_repo.dart';
-import 'package:e_commerce_fruits_hub/featurs/auth/presentation/cubits/sginin/signin_cubit.dart';
+import 'package:e_commerce_fruits_hub/featurs/auth/presentation/cubits/sginin/signing_cubit.dart';
 
 import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/widgets/sginin_view_body.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/widgets/signinViewBody_blocConsumer.dart';
@@ -22,7 +22,7 @@ class SigninView extends StatelessWidget {
         showNotficationWidget: false,
       ),
       body: BlocProvider(
-        create: (context) => SigninCubit(getIt<AuthRepo>()),
+        create: (context) => SigningCubit(getIt<AuthRepo>()),
         child: SgininViewBodyBlocConsumer(),
       ),
     );

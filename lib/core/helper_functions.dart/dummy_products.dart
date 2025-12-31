@@ -5,10 +5,11 @@ ProductEntity dummyProduct() {
     avrageRate: 0,
     ratingCount: 0,
     sellingCount: 0,
+    
     name: 'dummyProduct',
     description: 'dummyProduct',
     price: 0,
-    code: 'dummyProduct',
+    productId: 'dummyProduct',
     isFeatured: false,
     imageUrl: null,
     expirationMonth: 0,

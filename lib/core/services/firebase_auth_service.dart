@@ -143,4 +143,8 @@ class FirebaseAuthService {
     User? user = FirebaseAuth.instance.currentUser;
     return user != null;
   }
+
+  Future<void> signOut() async{ 
+    await FirebaseAuth.instance.signOut();
+  }
 }

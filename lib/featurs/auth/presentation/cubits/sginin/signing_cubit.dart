@@ -1,12 +1,14 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/domain/entities/user_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/domain/repos/auth_repo.dart';
 import 'package:meta/meta.dart';
 
-part 'signin_state.dart';
+part 'signing_state.dart';
 
-class SigninCubit extends Cubit<SigninState> {
-  SigninCubit(this.authReop) : super(SigninInitial());
+class SigningCubit extends Cubit<SigningState> {
+  SigningCubit(this.authReop) : super(SigninInitial());
   final AuthRepo authReop;
   Future<void> signInWithEmailAndPassword({
     required String email,
@@ -40,4 +42,6 @@ class SigninCubit extends Cubit<SigninState> {
       (userEntity) => emit(SigninSuccess(userEntity: userEntity)),
     );
   }
+
+ 
 }

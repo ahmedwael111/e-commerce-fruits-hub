@@ -6,7 +6,7 @@ import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
 import 'package:e_commerce_fruits_hub/core/utils/assets.dart';
 import 'package:e_commerce_fruits_hub/core/widgets/coustom_form_textField.dart';
 import 'package:e_commerce_fruits_hub/core/widgets/password_field.dart';
-import 'package:e_commerce_fruits_hub/featurs/auth/presentation/cubits/sginin/signin_cubit.dart';
+import 'package:e_commerce_fruits_hub/featurs/auth/presentation/cubits/sginin/signing_cubit.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/widgets/dont_have_account_widget.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/widgets/or_divider.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/widgets/social_login_widget.dart';
@@ -66,7 +66,7 @@ class _SgininViewBodyState extends State<SgininViewBody> {
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
-                    BlocProvider.of<SigninCubit>(
+                    BlocProvider.of<SigningCubit>(
                       context,
                     ).signInWithEmailAndPassword(
                       email: email,
@@ -88,7 +88,7 @@ class _SgininViewBodyState extends State<SgininViewBody> {
                 image: Assets.assetsGoogleLogo,
                 title: 'تسجيل بواسطة جوجل',
                 onPressed: () {
-                  BlocProvider.of<SigninCubit>(context).signInWithGoogle();
+                  BlocProvider.of<SigningCubit>(context).signInWithGoogle();
                 },
               ),
               const SizedBox(height: 16),
@@ -108,7 +108,7 @@ class _SgininViewBodyState extends State<SgininViewBody> {
                 image: Assets.assetsFacebookLogo,
                 title: 'تسجيل بواسطة فيسبوك',
                 onPressed: () {
-                  BlocProvider.of<SigninCubit>(context).signInWithFacebook();
+                  BlocProvider.of<SigningCubit>(context).signInWithFacebook();
                 },
               ),
             ],

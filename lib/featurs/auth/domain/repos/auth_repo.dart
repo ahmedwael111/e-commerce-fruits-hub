@@ -18,4 +18,5 @@ abstract class AuthRepo {
   Future<Either<ServerFailuer, UserEntity>> signInWithGoogle();
   Future<Either<ServerFailuer, UserEntity>> signInWithFacebook();
   saveUserDataToLocalPrefs({required UserEntity user});
+  logout( );  
 }

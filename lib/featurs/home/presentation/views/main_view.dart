@@ -1,3 +1,6 @@
+import 'package:e_commerce_fruits_hub/core/cubits/products/product_updates_cubit/product_updats_cubit_cubit.dart';
+import 'package:e_commerce_fruits_hub/core/repos/products_repo.dart';
+import 'package:e_commerce_fruits_hub/core/services/get_it_server_locator.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/card_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/products_view.dart';
@@ -6,6 +9,8 @@ import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/co
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/home_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/main_view_Body.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/persistent_nav_bar.dart';
+import 'package:e_commerce_fruits_hub/featurs/profile/domain/repos/fav_user_orders_repo.dart';
+import 'package:e_commerce_fruits_hub/featurs/profile/presentation/manager/fav_user_orders/fav_user_orders_cubit.dart';
 import 'package:e_commerce_fruits_hub/featurs/profile/presentation/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,19 +24,33 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  int selectedIndex = 0;
-  List<Widget> pages = const [
-    HomeView(),
-    ProductsView(),
-    CardView(),
-    ProfileView(),
-  ];
+  // int selectedIndex = 0;
+  // List<Widget> pages = const [
+  //   HomeView(),
+  //   ProductsView(),
+  //   CardView(),
+  //   ProfileView(),
+  // ];
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CartCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => CartCubit(),
+
+          // this PersistentNavBar uses persistent_bottom_nav_bar package its handling the bottom nav bar and the page switching with state retention all in one widget
+        ),
+        BlocProvider(
+          create:
+              (context) =>
+                  FavUserProductsEditsCubit(getIt<FavUserOrdersRepo>()),
+        ),
+        BlocProvider(
+          create:
+              (context) => ProductUpdatsCubitCubit(getIt.get<ProductsRepo>()),
+        ),
+      ],
       child: Scaffold(body: MainViewBodyWithPersistentNaveBar()),
-      // this PersistentNavBar uses persistent_bottom_nav_bar package its handling the bottom nav bar and the page switching with state retention all in one widget
     );
   }
 }

@@ -6,7 +6,7 @@ part 'cart_item_state.dart';
 
 class CartItemCubit extends Cubit<CartItemState> {
   CartItemCubit() : super(CartItemInitial());
-  void updateCartItem(CardItemEntity cartItemEntity) {
-    emit(CartItemUpdated(cartItemEntity));
+  void updateCartItem({CardItemEntity? cartItemEntity}) {
+    emit(CartItemUpdated(cartItemEntity: cartItemEntity));
   }
 }

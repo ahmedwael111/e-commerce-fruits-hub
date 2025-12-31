@@ -12,6 +12,7 @@ class FeaturedItemBottom extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
     return TextButton(
       style: TextButton.styleFrom(
         backgroundColor: Colors.white,
@@ -20,7 +21,7 @@ class FeaturedItemBottom extends StatelessWidget {
       ),
       onPressed: onPressed,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 0),
+        padding: EdgeInsets.symmetric(horizontal: width * 0.05, vertical: 0),
 
         child: FittedBox(
           child: Text(

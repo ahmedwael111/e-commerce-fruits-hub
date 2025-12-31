@@ -14,7 +14,7 @@ class OrdersReopImpl implements OrdersRepo {
   Future<Either<Failuer, void>> addOrder(OrderEntity orderEntity) async {
     try {
       var orderModel = OrderModel.fromEntity(orderEntity);
-      databaseService.saveData(
+      databaseService.addData(
         path: BackendEndpointsStatics.addOrder,
         documenId: orderModel.orderId, // use order id as document id
         data: orderModel.toJson(),

@@ -18,6 +18,14 @@ class Assets {
   /// assets/boxMyOrders.png
   static const String assetsBoxMyOrders = "assets/boxMyOrders.png";
 
+  /// Assets for assetsCalendar
+  /// assets/calendar.png
+  static const String assetsCalendar = "assets/calendar.png";
+
+  /// Assets for assetsCaloris
+  /// assets/caloris.png
+  static const String assetsCaloris = "assets/caloris.png";
+
   /// Assets for assetsCamera
   /// assets/Camera.png
   static const String assetsCamera = "assets/Camera.png";
@@ -29,6 +37,10 @@ class Assets {
   /// Assets for assetsCircles
   /// assets/circles.svg
   static const String assetsCircles = "assets/circles.svg";
+
+  /// Assets for assetsEllipseOfProduct
+  /// assets/EllipseOfProduct.png
+  static const String assetsEllipseOfProduct = "assets/EllipseOfProduct.png";
 
   /// Assets for assetsEmptyWallet
   /// assets/empty-wallet.png
@@ -106,6 +118,14 @@ class Assets {
   /// assets/notification2x.png
   static const String assetsNotification2x = "assets/notification2x.png";
 
+  /// Assets for assetsOrderItem
+  /// assets/orderItem.png
+  static const String assetsOrderItem = "assets/orderItem.png";
+
+  /// Assets for assetsOrganic
+  /// assets/organic.png
+  static const String assetsOrganic = "assets/organic.png";
+
   /// Assets for assetsPlanet
   /// assets/planet.svg
   static const String assetsPlanet = "assets/planet.svg";
@@ -145,6 +165,10 @@ class Assets {
   /// Assets for assetsShoppingCartOutline
   /// assets/shopping-cart_outline.png
   static const String assetsShoppingCartOutline = "assets/shopping-cart_outline.png";
+
+  /// Assets for assetsStar
+  /// assets/star.png
+  static const String assetsStar = "assets/star.png";
 
   /// Assets for assetsTrash
   /// assets/trash.png

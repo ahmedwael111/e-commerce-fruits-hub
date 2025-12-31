@@ -28,7 +28,7 @@ class CardViewBody extends StatelessWidget {
                     coustomAppBar(
                       context: context,
                       title: 'السلة',
-                      backButtonShow: true,
+                      backButtonShow: false,
                       showNotficationWidget: false,
                     ),
                     const SizedBox(height: 24),

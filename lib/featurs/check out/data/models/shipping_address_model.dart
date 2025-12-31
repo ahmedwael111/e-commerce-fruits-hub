@@ -26,11 +26,30 @@ class ShippingAddressModel {
         phoneNumber: entity.phoneNumber,
         addressDeitails: entity.addressDeitails,
       );
+  factory ShippingAddressModel.fromJson(Map<String, dynamic> json) {
+    return ShippingAddressModel(
+      name: json['name'],
+      email: json['email'],
+      address: json['address'],
+      city: json['city'],
+      phoneNumber: json['phoneNumber'],
+      addressDeitails: json['addressDeitails'],
+    );
+  }
   @override
   String toString() {
     // TODO: implement toString
     return ' $address , $city  ,$addressDeitails';
   }
+
+  toEntity() => ShippingAddressEntity(
+    name: name,
+    email: email,
+    address: address,
+    city: city,
+    phoneNumber: phoneNumber,
+    addressDeitails: addressDeitails,
+  );
 
   toJson() => {
     'name': name,

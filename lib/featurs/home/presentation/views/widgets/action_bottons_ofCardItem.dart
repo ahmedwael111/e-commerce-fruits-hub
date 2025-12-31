@@ -5,9 +5,16 @@ import 'package:e_commerce_fruits_hub/featurs/home/presentation/cubits/cart_item
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ActionBottonsOfcarditem extends StatelessWidget {
+class ActionBottonsOfcarditem extends StatefulWidget {
   const ActionBottonsOfcarditem({super.key, required this.cardItemEntity});
   final CardItemEntity cardItemEntity;
+
+  @override
+  State<ActionBottonsOfcarditem> createState() =>
+      _ActionBottonsOfcarditemState();
+}
+
+class _ActionBottonsOfcarditemState extends State<ActionBottonsOfcarditem> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -16,14 +23,16 @@ class ActionBottonsOfcarditem extends StatelessWidget {
           backgroundColor: AppColors.primaryColor,
           child: Center(child: Icon(Icons.add, color: Colors.white, size: 18)),
           onTap: () {
-            cardItemEntity.incementQuantity();
-            context.read<CartItemCubit>().updateCartItem(cardItemEntity);
+            widget.cardItemEntity.incementQuantity();
+            context.read<CartItemCubit>().updateCartItem(
+              cartItemEntity: widget.cardItemEntity,
+            );
           },
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            cardItemEntity.quantity.toString(),
+            widget.cardItemEntity.quantity.toString(),
             textAlign: TextAlign.center,
             style: AppTextStyles.bold16,
           ),
@@ -32,8 +41,10 @@ class ActionBottonsOfcarditem extends StatelessWidget {
           backgroundColor: const Color(0xFFF3F5F7),
           child: Icon(Icons.remove, color: Colors.grey, size: 18),
           onTap: () {
-            cardItemEntity.decrementQuantity();
-            context.read<CartItemCubit>().updateCartItem(cardItemEntity);
+            widget.cardItemEntity.decrementQuantity();
+            context.read<CartItemCubit>().updateCartItem(
+              cartItemEntity: widget.cardItemEntity,
+            );
           },
         ),
       ],

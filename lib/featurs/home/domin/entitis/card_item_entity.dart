@@ -15,8 +15,12 @@ class CardItemEntity extends Equatable {
     return productEntity.unitAmount * quantity;
   }
 
-  incementQuantity() {
-    quantity++;
+  incementQuantity({int? quantityNew}) {
+    if (quantityNew != null) {
+      quantity = quantityNew;
+    } else {
+      quantity++;
+    }
   }
 
   decrementQuantity() {

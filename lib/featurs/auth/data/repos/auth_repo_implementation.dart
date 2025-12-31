@@ -160,7 +160,7 @@ class AuthRepoImplementation implements AuthRepo {
 
   @override
   Future addUser({required UserEntity user}) async {
-    await databaseService.saveData(
+    await databaseService.addData(
       path: BackendEndpointsStatics.addUserData,
       data: UserModel.fromEntity(user).toMap(),
       documenId: user.id,
@@ -182,5 +182,11 @@ class AuthRepoImplementation implements AuthRepo {
     // save user data to local prefs as json string
     var jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
     Prefs.setString(kUserDataKey, jsonData);
+  }
+
+  @override
+  logout() {
+    _firebaseAuthService.signOut();
+    Prefs.remove(kUserDataKey);
   }
 }

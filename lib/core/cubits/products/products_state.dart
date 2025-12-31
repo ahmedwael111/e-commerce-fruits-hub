@@ -16,3 +16,15 @@ final class ProductsSuccess extends ProductsState {
   final List<ProductEntity> products;
   ProductsSuccess(this.products);
 }
+final class UpdateProductsInitial extends ProductsState {}
+
+final class UpdateProductsloading extends ProductsState {}
+
+final class UpdateProductsfailure extends ProductsState {
+  final String errorMessage;
+  UpdateProductsfailure(this.errorMessage);
+}
+
+final class UpdateProductsSuccess extends ProductsState {
+  
+}

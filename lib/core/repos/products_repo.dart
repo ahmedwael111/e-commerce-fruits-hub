@@ -6,4 +6,5 @@ abstract class ProductsRepo {
   Future<Either<Failuer, List<ProductEntity>>> getProducts();
   Future<Either<Failuer, List<ProductEntity>>>
   getPestSellingProducts(); // ALL products with filteration
+  Future<Either<Failuer, ProductEntity>> updateProduct(ProductEntity productEntity);
 }

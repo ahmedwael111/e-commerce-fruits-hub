@@ -10,7 +10,7 @@ class CardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CartItemCubit(),
-      child: CardViewBody(),
+      child: Scaffold(body: CardViewBody()),
     );
   }
 }

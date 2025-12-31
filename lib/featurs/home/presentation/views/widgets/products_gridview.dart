@@ -4,7 +4,7 @@ import 'package:e_commerce_fruits_hub/core/widgets/fruit_item.dart';
 import 'package:flutter/material.dart';
 
 class ProductsGridview extends StatelessWidget {
-  const ProductsGridview({super.key, required this.products});
+   ProductsGridview({super.key, required this.products});
   final List<ProductEntity> products;
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,9 @@ class ProductsGridview extends StatelessWidget {
         crossAxisSpacing: 16,
         childAspectRatio: 163 / 225,
       ),
-      itemBuilder: (context, index) => FruitItem(product: products[index]),
+      itemBuilder: (context, index) => FruitItem(
+        key: ValueKey(products[index].productId) ,
+        product: products[index]),
       itemCount: products.length,
     );
   }

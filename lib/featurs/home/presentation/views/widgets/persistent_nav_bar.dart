@@ -87,6 +87,7 @@ class _PersistentNavBarState extends State<PersistentNavBar> {
       context,
       controller: _controller,
       screens: pages,
+
       items: _navBarsItems(context),
       navBarHeight: width * 0.18,
       backgroundColor: Colors.white,

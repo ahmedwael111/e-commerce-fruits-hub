@@ -22,7 +22,7 @@ void main() async {
   Bloc.observer = AppBlocObserver();
   runApp(
     DevicePreview(
-      enabled: false,
+      enabled: true,
       builder:
           (context) => BlocProvider(
             create: (context) => ThemeCubitCubit(),

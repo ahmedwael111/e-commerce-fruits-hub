@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:e_commerce_fruits_hub/core/utils/app_colors.dart';
 import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
 import 'package:e_commerce_fruits_hub/core/utils/assets.dart';
@@ -18,7 +20,7 @@ class ProfileListViewEntity {
   });
 }
 
-List<ProfileListViewEntity> profileListViewEntity = [
+List<ProfileListViewEntity> profileListViewEntity(context) => [
   ProfileListViewEntity(
     leading: Assets.assetsUser2x,
     title: 'الملف الشخصي',
@@ -43,11 +45,11 @@ List<ProfileListViewEntity> profileListViewEntity = [
     leading: Assets.assetsNotification2x,
     title: 'الاشعارات',
     trailing: Transform.scale(
-      scale: 0.7,
+      scale: MediaQuery.of(context).size.width * 0.002,
       child: FlutterSwitch(
         value: false,
         activeColor: AppColors.primaryColor,
-        // width: 14,
+        width: 55,
         onToggle: (value) {},
       ),
     ),
@@ -66,13 +68,15 @@ List<ProfileListViewEntity> profileListViewEntity = [
     leading: Assets.assetsMagicpen,
     title: 'الوضع الداكن',
     trailing: Transform.scale(
-      scale: 0.7,
+      scale: MediaQuery.of(context).size.width * 0.002,
       child: BlocBuilder<ThemeCubitCubit, ThemeData>(
         builder: (context, state) {
           return FlutterSwitch(
             value: state.brightness == Brightness.dark,
             activeColor: AppColors.primaryColor,
-            // width: 14,
+            // toggleSize: 10,
+            width: 55,
+            // valueFontSize: 13,
             onToggle: (value) {
               BlocProvider.of<ThemeCubitCubit>(context).toggleTheme();
             },
