@@ -20,8 +20,8 @@ class CustomNetworkImage extends StatelessWidget {
 
       child: CachedNetworkImage(
         imageUrl: imageUrl,
-        scale: 22,
-        
+        scale: 3,
+
         placeholder:
             (context, url) => Skeletonizer(
               enabled: true,

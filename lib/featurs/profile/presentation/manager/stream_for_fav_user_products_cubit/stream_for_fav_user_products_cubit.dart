@@ -6,6 +6,7 @@ import 'package:e_commerce_fruits_hub/featurs/profile/domain/repos/fav_user_orde
 import 'package:equatable/equatable.dart';
 
 part 'stream_for_fav_user_products_state.dart';
+ 
 
 class StreamForFavUserProductsCubit
     extends Cubit<StreamForFavUserProductsState> {
@@ -14,6 +15,7 @@ class StreamForFavUserProductsCubit
   final FavUserOrdersRepo favUserOrdersRepo;
   StreamSubscription?
   streamSubscription; // to cancel the stream when not needed to avoid memory leak its name 'reference'
+ List<ProductEntity>? favUserProducts ;
   void fetchFavUserOrders() async {
     emit(StreamForFavUserProductsloading());
     streamSubscription = favUserOrdersRepo
@@ -25,6 +27,7 @@ class StreamForFavUserProductsCubit
             },
             (r) {
               emit(StreamForFavUserProductsSuccess(products: r));
+              favUserProducts = r;
             },
           );
         });

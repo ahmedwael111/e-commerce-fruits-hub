@@ -54,15 +54,17 @@ class FavUserOrdersRepoImpl implements FavUserOrdersRepo {
   @override
   Stream<Either<Failuer, List<ProductEntity>>> fetchFavUserOrders() async* {
     try {
-      await for (var data in databaseService.streamDataFromCollectionWithInDocument(
-        path: BackendEndpointsStatics.users,
-        documenId: getUserDataFromPrefs().id,
-        subCollectionPath: BackendEndpointsStatics.favUserOrders,
-       
-      )) {
+      await for (var data in databaseService
+          .streamDataFromCollectionWithInDocument(
+            path: BackendEndpointsStatics.users,
+            documenId: getUserDataFromPrefs().id,
+            subCollectionPath: BackendEndpointsStatics.favUserOrders,
+          )) {
         // var data1 = data as List<Map<String, dynamic>>;
         List<ProductEntity> products =
-            (data as List<Map<String, dynamic>>).map((e) => ProductModel.fromMap(e).toEntity()).toList();
+            (data as List<Map<String, dynamic>>)
+                .map((e) => ProductModel.fromMap(e).toEntity())
+                .toList();
         yield right(products);
       }
     } catch (e) {
@@ -70,4 +72,6 @@ class FavUserOrdersRepoImpl implements FavUserOrdersRepo {
       yield left(ServerFailuer(e.toString()));
     }
   }
+
+ 
 }

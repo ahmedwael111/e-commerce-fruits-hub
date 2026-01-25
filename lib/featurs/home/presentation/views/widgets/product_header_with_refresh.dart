@@ -1,4 +1,5 @@
 import 'package:e_commerce_fruits_hub/core/cubits/products/products_cubit.dart';
+import 'package:e_commerce_fruits_hub/core/cubits/products/search_product_cubit/search_product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,7 +12,7 @@ class ProductHeaderWithRefresh extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProductsHeader(
-      resultsCount: context.watch<ProductsCubit>().allproductsLength,
+      resultsCount: context.watch<SearchProductCubit>().prodcutsLength,
     );
   }
 }

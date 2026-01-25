@@ -5,7 +5,7 @@ import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/pr
 import 'package:flutter/material.dart';
 
 class FavOrdersViewBody extends StatelessWidget {
-   FavOrdersViewBody({super.key, required this.products});
+  const FavOrdersViewBody({super.key, required this.products});
   final List<ProductEntity> products;
   @override
   Widget build(BuildContext context) {

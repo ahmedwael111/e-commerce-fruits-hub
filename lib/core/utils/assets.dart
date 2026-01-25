@@ -2,9 +2,17 @@
 class Assets {
   Assets._();
   
+  /// Assets for assetsAnanass
+  /// assets/ananass.png
+  static const String assetsAnanass = "assets/ananass.png";
+
   /// Assets for assetsAppleLogo
   /// assets/appleLogo.svg
   static const String assetsAppleLogo = "assets/appleLogo.svg";
+
+  /// Assets for assetsAvocado
+  /// assets/Avocado.png
+  static const String assetsAvocado = "assets/Avocado.png";
 
   /// Assets for assetsBackground1OnBoarding
   /// assets/background_1_onBoarding.svg
@@ -130,6 +138,10 @@ class Assets {
   /// assets/planet.svg
   static const String assetsPlanet = "assets/planet.svg";
 
+  /// Assets for assetsPnana
+  /// assets/pnana.png
+  static const String assetsPnana = "assets/pnana.png";
+
   /// Assets for assetsProductIconBold
   /// assets/product_icon_bold.png
   static const String assetsProductIconBold = "assets/product_icon_bold.png";
@@ -169,6 +181,10 @@ class Assets {
   /// Assets for assetsStar
   /// assets/star.png
   static const String assetsStar = "assets/star.png";
+
+  /// Assets for assetsStropary
+  /// assets/stropary.png
+  static const String assetsStropary = "assets/stropary.png";
 
   /// Assets for assetsTrash
   /// assets/trash.png

@@ -1,12 +1,14 @@
+import 'package:e_commerce_fruits_hub/core/cubits/products/search_product_cubit/search_product_cubit.dart';
 import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
 import 'package:e_commerce_fruits_hub/core/utils/assets.dart';
+import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/custom_bottom_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchTextfield extends StatelessWidget {
-  const SearchTextfield({super.key});
-
-  // final void Function(String?)? onSaved;
+  const SearchTextfield({super.key, this.focusNode});
+  final FocusNode? focusNode;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,6 +24,11 @@ class SearchTextfield extends StatelessWidget {
         ],
       ),
       child: TextField(
+        focusNode: focusNode,
+
+        onSubmitted: (value) {
+          context.read<SearchProductCubit>().searchProducts(value);
+        },
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
           hintText: 'ابحث عن.......',
@@ -35,7 +42,13 @@ class SearchTextfield extends StatelessWidget {
           suffixIcon: SizedBox(
             width: 20,
 
-            child: Center(child: SvgPicture.asset(Assets.assetsSetting4)),
+            child: GestureDetector(
+              onTap: () {
+                //open filter bottom sheet
+                customBottomSheet(context, 'SearchproductsCubit');
+              },
+              child: Center(child: SvgPicture.asset(Assets.assetsSetting4)),
+            ),
           ),
           suffixIconColor: const Color(0xFF949D9E),
 

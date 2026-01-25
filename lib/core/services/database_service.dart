@@ -31,6 +31,12 @@ abstract class DatabaseService {
     String? documenId,
     Map<String, dynamic>? queryParam,
   });
+  Future<dynamic> getDataBySearch({
+    required String path,
+    required String firstFieldName,
+    required String secondFieldName,
+    required String searchValue,
+  });
   Stream<dynamic> streamData({
     required String path,
     // String? documenId,

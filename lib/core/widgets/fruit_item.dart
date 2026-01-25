@@ -6,6 +6,7 @@ import 'package:e_commerce_fruits_hub/core/services/shared_prefrenseces_singleto
 import 'package:e_commerce_fruits_hub/core/utils/app_colors.dart';
 import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
 import 'package:e_commerce_fruits_hub/core/widgets/cached_netwok_image.dart';
+import 'package:e_commerce_fruits_hub/core/widgets/custom_fav_bottom.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/domin/entitis/card_item_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/one_product_view.dart';
@@ -15,8 +16,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class FruitItem extends StatefulWidget {
-  const FruitItem({super.key, required this.product});
+  const FruitItem({super.key, required this.product, required this.isFav});
   final ProductEntity product;
+  final bool isFav;
 
   @override
   State<FruitItem> createState() => _FruitItemState();
@@ -135,27 +137,9 @@ class _FruitItemState extends State<FruitItem> {
             Positioned(
               top: 8,
               right: 8,
-              child: GestureDetector(
-                onTap: () async {
-                  
-                   active = !active;
-                  setState(() {}); 
-                  final favCubit =
-                      context
-                          .read<
-                            FavUserProductsEditsCubit
-                          >(); // for issue with setstat and context
-                          if (active == true) {
-  favCubit.addFavUserOrders(widget.product);
-} else {
-  favCubit.deleteFavUserOrders(widget.product);
-}
-                },
-  
-                child:
-                    active  
-                        ? Icon(Icons.favorite, color: Colors.red)
-                        : Icon(Icons.favorite_border_rounded),
+              child: CustomFavBottom(
+                isFav: widget.isFav,
+                product: widget.product,
               ),
             ),
           ],

@@ -10,21 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class FavortaOrderViewBodyBlocConsumer1 extends StatefulWidget {
-   FavortaOrderViewBodyBlocConsumer1({super.key});
-
-  @override
-  State<FavortaOrderViewBodyBlocConsumer1> createState() =>
-      _FavortaOrderViewBodyBlocConsumer1State();
-}
-
-class _FavortaOrderViewBodyBlocConsumer1State
-    extends State<FavortaOrderViewBodyBlocConsumer1> {
-  @override
-  void initState() {
-    super.initState();
-    // context.read<StreamForFavUserProductsCubit>().fetchFavUserOrders();
-  }
+class FavortaOrderViewBodyBlocConsumer1 extends StatelessWidget {
+  const FavortaOrderViewBodyBlocConsumer1({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -17,11 +17,13 @@ class CoustomProfileAvatar extends StatelessWidget {
             border: Border.all(width: 13, color: Colors.white),
             borderRadius: BorderRadius.circular(50),
           ),
-          child: Image.asset(
-            getUserDataFromPrefs().imageUrl.isNotEmpty
-                ? getUserDataFromPrefs().imageUrl
-                : Assets.assetsProfile,
-          ),
+          child: Image.asset(Assets.assetsProfile),
+
+          //  Image.asset(
+          //   getUserDataFromPrefs().imageUrl.isNotEmpty
+          //       ? getUserDataFromPrefs().imageUrl
+          //       : Assets.assetsProfile,
+          // ),
         ),
         Positioned(
           bottom: 0,

@@ -15,18 +15,14 @@ class ProductsRepoImpl implements ProductsRepo {
   @override
   Future<Either<Failuer, List<ProductEntity>>> getPestSellingProducts() async {
     try {
-      var data =
-          await databaseService.getData(
-                path: BackendEndpointsStatics.addproducts,
-                queryParam: {
-                  'orderBy': 'sellingCount',
-                  'limit': 10,
-                  'desc': true,
-                },
-              )
-              as List<Map<String, dynamic>>;
+      var data = await databaseService.getData(
+        path: BackendEndpointsStatics.addproducts,
+        queryParam: {'sellingCount': 'asc'},
+      );
       List<ProductEntity> products =
-          data.map((e) => ProductModel.fromMap(e).toEntity()).toList();
+          (data as List<Map<String, dynamic>>)
+              .map((e) => ProductModel.fromMap(e).toEntity())
+              .toList();
       return right(products);
     } on Exception catch (e) {
       return left(ServerFailuer('خطاء في الاتصال بقاعدة البيانات'));
@@ -36,13 +32,13 @@ class ProductsRepoImpl implements ProductsRepo {
   @override
   Future<Either<Failuer, List<ProductEntity>>> getProducts() async {
     try {
-      var data =
-          await databaseService.getData(
-                path: BackendEndpointsStatics.addproducts,
-              )
-              as List<Map<String, dynamic>>;
-      List<ProductEntity> products = // map data to list of product entity
-          data.map((e) => ProductModel.fromMap(e).toEntity()).toList();
+      var data = await databaseService.getData(
+        path: BackendEndpointsStatics.addproducts,
+      );
+      List<ProductEntity> products =
+          (data as List<Map<String, dynamic>>)
+              .map((e) => ProductModel.fromMap(e).toEntity())
+              .toList();
       return right(products);
     } on Exception catch (e) {
       return left(ServerFailuer('خطاء في الاتصال بقاعدة البيانات'));
@@ -56,18 +52,41 @@ class ProductsRepoImpl implements ProductsRepo {
     try {
       var productModel = ProductModel.fromEntity(productEntity);
 
-      await  databaseService.updateData(
+      await databaseService.updateData(
         path: BackendEndpointsStatics.updateproducts,
         documenId: productModel.productId,
-          data: { 
-            // 'isFav': productModel.isFav == true ? false : true
-            },
+        data: {
+          // 'isFav': productModel.isFav == true ? false : true
+        },
       );
-       var updatedProductEntity = productModel.toEntity(); // update productEntity
+      var updatedProductEntity =
+          productModel.toEntity(); // update productEntity
 
       return right(updatedProductEntity);
     } on Exception catch (e) {
       log(' products repo impl  in updateProduct: ${e.toString()}');
+      return left(ServerFailuer('خطاء في الاتصال بقاعدة البيانات'));
+    }
+  }
+
+  @override
+  Future<Either<Failuer, List<ProductEntity>>> getDataWithSearch({
+    required String searchValue,
+  }) async {
+    try {
+      var data = await databaseService.getDataBySearch(
+        path: BackendEndpointsStatics.addproducts,
+        firstFieldName: 'name',
+        secondFieldName: 'description',
+        searchValue: searchValue,
+      );
+      List<ProductEntity> products =
+          (data as List<Map<String, dynamic>>)
+              .map((e) => ProductModel.fromMap(e).toEntity())
+              .toList();
+      return right(products);
+    } on Exception catch (e) {
+      log(' products repo impl  in getDataWithSearch: ${e.toString()}');
       return left(ServerFailuer('خطاء في الاتصال بقاعدة البيانات'));
     }
   }

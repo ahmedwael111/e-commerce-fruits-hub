@@ -1,4 +1,5 @@
 import 'package:e_commerce_fruits_hub/core/cubits/products/product_updates_cubit/product_updats_cubit_cubit.dart';
+import 'package:e_commerce_fruits_hub/core/cubits/products/search_product_cubit/search_product_cubit.dart';
 import 'package:e_commerce_fruits_hub/core/repos/products_repo.dart';
 import 'package:e_commerce_fruits_hub/core/services/get_it_server_locator.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/cubits/cart_cubit/cart_cubit.dart';
@@ -46,8 +47,10 @@ class _MainViewState extends State<MainView> {
                   FavUserProductsEditsCubit(getIt<FavUserOrdersRepo>()),
         ),
         BlocProvider(
-          create:
-              (context) => ProductUpdatsCubitCubit(getIt.get<ProductsRepo>()),
+          create: (context) => ProductUpdatsCubitCubit(getIt<ProductsRepo>()),
+        ),
+        BlocProvider(
+          create: (context) => SearchProductCubit(getIt<ProductsRepo>()),
         ),
       ],
       child: Scaffold(body: MainViewBodyWithPersistentNaveBar()),

@@ -24,9 +24,11 @@ class FavorteOrderView extends StatelessWidget {
           BlocProvider(
             create: (context) => ProductsCubit(getIt<ProductsRepo>()),
           ),
-          BlocProvider.value(
-            value: StreamForFavUserProductsCubit(getIt<FavUserOrdersRepo>())
-              ..fetchFavUserOrders(),
+          BlocProvider(
+            create:
+                (context) =>
+                    StreamForFavUserProductsCubit(getIt<FavUserOrdersRepo>())
+                      ..fetchFavUserOrders(),
           ),
         ],
         child: FavortaOrderViewBodyBlocConsumer1(),

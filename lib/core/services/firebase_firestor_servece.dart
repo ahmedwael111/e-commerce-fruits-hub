@@ -171,10 +171,27 @@ class FirebaseFirestorService implements DatabaseService {
       }
     }
     await for (var result in data.snapshots()) {
-      log('STREAM UPDATE: ${result.docs.length}');
+      log('STREAM UPDATE new **: ${result.docs.length}');
 
       // 'await for' its insted "listen"  that work with streams using snapshots
       yield result.docs.map((e) => e.data()).toList();
     }
+  }
+
+  @override
+  Future getDataBySearch({
+    required String path,
+    required String firstFieldName,
+    required String secondFieldName,
+    required String searchValue,
+  }) async {
+    Query<Map<String, dynamic>> data = firestore
+        .collection(path)
+        .orderBy(firstFieldName)
+        .orderBy(secondFieldName)
+        .startAt([searchValue])
+        .endAt(['$searchValue\uf8ff']);
+    var requist = await data.get(); // 3) get data with search
+    return requist.docs.map((e) => e.data()).toList();
   }
 }

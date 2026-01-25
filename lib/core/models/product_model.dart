@@ -102,7 +102,7 @@ class ProductModel {
       'name': name,
       'description': description,
       'price': price,
-      'code': productId,
+      'productId': productId,
       'isFeatured': isFeatured,
       'imageUrl': imageUrl,
       'expirationMonth': expirationMonth,
