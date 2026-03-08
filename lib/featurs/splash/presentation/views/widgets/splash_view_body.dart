@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:e_commerce_fruits_hub/constants.dart';
 import 'package:e_commerce_fruits_hub/core/services/firebase_auth_service.dart';
 import 'package:e_commerce_fruits_hub/core/services/shared_prefrenseces_singleton.dart';
