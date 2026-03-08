@@ -19,12 +19,19 @@ class _PersistentNavBarState extends State<PersistentNavBar> {
   );
 
   // Screens
-  List<Widget> pages = const [
-    HomeView(),
-    ProductsView(),
-    CardView(),
-    ProfileView(),
-  ];
+  List<Widget> getPages(BuildContext context) {
+    return const [
+      HomeView(),
+      ProductsView(),
+      CardView(),
+      ProfileView(),
+    ];
+  }
+  //   HomeView(),
+  //   ProductsView(),
+  //   CardView(),
+  //   ProfileView(),
+  // ];
 
   // NAV BAR ITEMS
   List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) {
@@ -86,7 +93,7 @@ class _PersistentNavBarState extends State<PersistentNavBar> {
     return PersistentTabView(
       context,
       controller: _controller,
-      screens: pages,
+      screens: getPages(context),
 
       items: _navBarsItems(context),
       navBarHeight: width * 0.18,

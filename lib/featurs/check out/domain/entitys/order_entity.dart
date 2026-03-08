@@ -1,7 +1,5 @@
 import 'package:e_commerce_fruits_hub/featurs/check%20out/domain/entitys/shipping_address_entity.dart';
-import 'package:e_commerce_fruits_hub/featurs/home/domin/entitis/card_item_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/domin/entitis/cart_entity.dart';
-import 'package:e_commerce_fruits_hub/featurs/home/presentation/cubits/cart_item_cubit/cart_item_cubit.dart';
 
 class OrderEntity { // this used only to show date in check out views
   final String uId;

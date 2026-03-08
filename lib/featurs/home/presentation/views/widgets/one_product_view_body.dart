@@ -7,7 +7,6 @@ import 'package:e_commerce_fruits_hub/core/widgets/cached_netwok_image.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/domin/entitis/card_item_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/cubits/cart_item_cubit/cart_item_cubit.dart';
-import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/action_bottons_ofCardItem.dart';
 import 'package:e_commerce_fruits_hub/featurs/on_boarding/presentation/views/widgets/coustom_bottom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -328,7 +327,7 @@ class OrganicsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 12, left: 16, right: 8, bottom: 12),
+      padding: const EdgeInsets.only(top: 12, left: 4, right: 4, bottom: 12),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           side: BorderSide(width: 1, color: const Color(0xFFF1F1F5)),
@@ -356,7 +355,7 @@ class OrganicsItem extends StatelessWidget {
                   Text(
                     title,
                     textAlign: TextAlign.right,
-                    style: AppTextStyles.bold16.copyWith(
+                    style: AppTextStyles.bold13.copyWith(
                       color: AppColors.lightprimaryColor,
                     ),
                   ),

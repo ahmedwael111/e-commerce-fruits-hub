@@ -1,7 +1,6 @@
 import 'package:e_commerce_fruits_hub/featurs/check%20out/presentation/views/widgets/address_input_section.dart';
 import 'package:e_commerce_fruits_hub/featurs/check%20out/presentation/views/widgets/payment_section.dart';
 import 'package:e_commerce_fruits_hub/featurs/check%20out/presentation/views/widgets/shipping_section.dart';
-import 'package:e_commerce_fruits_hub/featurs/check%20out/presentation/views/widgets/steps_list.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 

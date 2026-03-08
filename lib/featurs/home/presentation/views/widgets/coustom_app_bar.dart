@@ -2,7 +2,9 @@ import 'package:e_commerce_fruits_hub/core/helper_functions.dart/get_user_data_f
 import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
 import 'package:e_commerce_fruits_hub/core/utils/assets.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/coustom_notfication_widget.dart';
+import 'package:e_commerce_fruits_hub/featurs/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class CoustomAppBar extends StatelessWidget {
   const CoustomAppBar({super.key});
@@ -26,7 +28,18 @@ class CoustomAppBar extends StatelessWidget {
           textAlign: TextAlign.right,
           style: AppTextStyles.bold16.copyWith(color: Colors.black),
         ),
-        trailing: CoustomNotficationWidget(),
+        trailing: GestureDetector(
+          onTap: () {
+            PersistentNavBarNavigator.pushNewScreen(
+              context,
+              screen: const OnBoardingView(),
+              pageTransitionAnimation: PageTransitionAnimation.fade,
+
+              withNavBar: false,
+            );
+          },
+          child: CoustomNotficationWidget(),
+        ),
         leading: Padding(
           padding: const EdgeInsets.all(3),
           child: Image.asset(Assets.assetsProfile),

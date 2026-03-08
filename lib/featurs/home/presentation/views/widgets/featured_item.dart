@@ -2,7 +2,6 @@ import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
 import 'package:e_commerce_fruits_hub/core/utils/assets.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/featured_item_bottom.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg_provider/flutter_svg_provider.dart' show Svg;
 // import 'package:flutter_svg/svg.dart';
 
 class FeaturedItem extends StatelessWidget {

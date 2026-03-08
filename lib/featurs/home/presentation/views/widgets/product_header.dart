@@ -1,12 +1,7 @@
-import 'package:e_commerce_fruits_hub/core/cubits/products/products_cubit.dart';
 import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
 import 'package:e_commerce_fruits_hub/core/utils/assets.dart';
-import 'package:e_commerce_fruits_hub/core/widgets/snake_bar.dart';
-import 'package:e_commerce_fruits_hub/featurs/best_selling_fruit/presentation/views/best_selling_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/custom_bottom_sheet.dart';
-import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/products_gridview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductsHeader extends StatelessWidget {
   const ProductsHeader({super.key, required this.resultsCount});

@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:e_commerce_fruits_hub/core/entities/product_entity.dart';
 import 'package:e_commerce_fruits_hub/core/models/review_model.dart';

@@ -4,8 +4,8 @@ import 'package:e_commerce_fruits_hub/core/widgets/coutom_app_bar.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/products_gridview.dart';
 import 'package:flutter/material.dart';
 
-class FavOrdersViewBody extends StatelessWidget {
-  const FavOrdersViewBody({super.key, required this.products});
+class FavProductsViewBody extends StatelessWidget {
+  const FavProductsViewBody({super.key, required this.products});
   final List<ProductEntity> products;
   @override
   Widget build(BuildContext context) {
@@ -25,13 +25,10 @@ class FavOrdersViewBody extends StatelessWidget {
                   showNotficationWidget: false,
                 ),
                 const SizedBox(height: 24),
+                ProductsGridview(products: products),
               ],
             ),
           ),
-        ),
-        SliverPadding(
-          padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-          sliver: ProductsGridview(products: products),
         ),
       ],
     );

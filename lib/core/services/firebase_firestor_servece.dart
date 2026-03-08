@@ -137,14 +137,14 @@ class FirebaseFirestorService implements DatabaseService {
   }
 
   @override
-  Stream streamDataFromCollectionWithInDocument({
+  Future<dynamic> dataFromCollectionWithInDocument({
     required String path,
     // required Map<String, dynamic> data,
     Map<String, dynamic>? queryParam,
     required String? documenId,
     required String subCollectionPath,
     // required String docIdOfSubCollection,
-  }) async* {
+  }) async {
     Query<Map<String, dynamic>> data = firestore
         .collection(path)
         .doc(documenId)
@@ -170,13 +170,14 @@ class FirebaseFirestorService implements DatabaseService {
         ); // filter on spesific element
       }
     }
-    await for (var result in data.snapshots()) {
+    var result = await data.get();
       log('STREAM UPDATE new **: ${result.docs.length}');
 
       // 'await for' its insted "listen"  that work with streams using snapshots
-      yield result.docs.map((e) => e.data()).toList();
+      return result.docs.map((e) => e.data()).toList();
     }
-  }
+    
+     
 
   @override
   Future getDataBySearch({

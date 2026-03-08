@@ -2,7 +2,6 @@ import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/sginin_vie
 import 'package:e_commerce_fruits_hub/featurs/auth/presentation/views/signup_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/best_selling_fruit/presentation/views/best_selling_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/check%20out/presentation/views/checkout_view.dart';
-import 'package:e_commerce_fruits_hub/featurs/home/domin/entitis/card_item_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/domin/entitis/cart_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/main_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/products_view.dart';

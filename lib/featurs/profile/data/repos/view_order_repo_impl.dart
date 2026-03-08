@@ -4,8 +4,6 @@ import 'package:e_commerce_fruits_hub/core/errors/failuer.dart';
 import 'package:e_commerce_fruits_hub/core/helper_functions.dart/get_user_data_from_prefs.dart';
 import 'package:e_commerce_fruits_hub/core/services/database_service.dart';
 import 'package:e_commerce_fruits_hub/core/utils/backend_endpoints_statics.dart';
-import 'package:e_commerce_fruits_hub/featurs/check%20out/data/models/order_model.dart';
-import 'package:e_commerce_fruits_hub/featurs/check%20out/domain/entitys/order_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/profile/data/models/order_model.dart';
 import 'package:e_commerce_fruits_hub/featurs/profile/domain/entitiys/order_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/profile/domain/repos/view_orders_repo.dart';

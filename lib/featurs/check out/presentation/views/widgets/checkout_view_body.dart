@@ -7,7 +7,6 @@ import 'package:e_commerce_fruits_hub/featurs/check%20out/domain/entitys/order_e
 import 'package:e_commerce_fruits_hub/featurs/check%20out/domain/entitys/payment_pay_pal_entity/payment_pay_pal_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/check%20out/presentation/manger/add_order/add_order_cubit.dart';
 import 'package:e_commerce_fruits_hub/featurs/check%20out/presentation/views/widgets/checkout_steps_pageView.dart';
-import 'package:e_commerce_fruits_hub/featurs/check%20out/presentation/views/widgets/step_item.dart';
 import 'package:e_commerce_fruits_hub/featurs/check%20out/presentation/views/widgets/steps_list.dart';
 import 'package:e_commerce_fruits_hub/featurs/on_boarding/presentation/views/widgets/coustom_bottom.dart';
 import 'package:flutter/material.dart';

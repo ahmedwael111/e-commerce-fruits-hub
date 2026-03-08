@@ -1,10 +1,6 @@
-import 'package:e_commerce_fruits_hub/featurs/check%20out/data/models/order_product_model.dart';
 import 'package:e_commerce_fruits_hub/featurs/check%20out/data/models/shipping_address_model.dart';
-import 'package:e_commerce_fruits_hub/featurs/check%20out/domain/entitys/order_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/profile/data/models/order_product_model.dart';
-import 'package:e_commerce_fruits_hub/featurs/profile/data/models/shipping_address_model.dart';
 import 'package:e_commerce_fruits_hub/featurs/profile/domain/entitiys/order_entity.dart';
-import 'package:e_commerce_fruits_hub/featurs/profile/domain/entitiys/order_product_entity.dart';
 
 class OrderModelForOrders {
   // this is the model that will be sent to the server

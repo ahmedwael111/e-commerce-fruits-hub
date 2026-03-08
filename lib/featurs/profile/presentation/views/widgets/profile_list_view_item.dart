@@ -1,10 +1,7 @@
-import 'package:e_commerce_fruits_hub/core/cubits/products/products_cubit.dart';
-import 'package:e_commerce_fruits_hub/core/services/get_it_server_locator.dart';
 import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
 import 'package:e_commerce_fruits_hub/featurs/profile/domain/entitiys/profile_list_view_entity.dart';
-import 'package:e_commerce_fruits_hub/featurs/profile/domain/repos/fav_user_orders_repo.dart';
-import 'package:e_commerce_fruits_hub/featurs/profile/presentation/manager/stream_for_fav_user_products_cubit/stream_for_fav_user_products_cubit.dart';
-import 'package:e_commerce_fruits_hub/featurs/profile/presentation/views/favort_order_view.dart';
+import 'package:e_commerce_fruits_hub/featurs/profile/presentation/manager/fav_user_orders/fav_user_orders_cubit.dart';
+import 'package:e_commerce_fruits_hub/featurs/profile/presentation/views/favort_products_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/profile/presentation/views/my_orders_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,40 +38,42 @@ class ProfileListView extends StatelessWidget {
   // final BuildContext context1;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create:
-          (context) =>
-              StreamForFavUserProductsCubit(getIt<FavUserOrdersRepo>())
-                ..fetchFavUserOrders(),
-      child: ListView.separated(
-        itemBuilder:
-            (itemContext, index) => GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (itemContext) {
-                      return profilePages[index];
-                    },
-                  ),
-                );
-              },
-              child: ProfileListViewItem(profileItem: profileItem[index]),
-            ),
-        separatorBuilder:
-            (itemContext, index) =>
-                const Divider(color: Color(0xFFE8E8E8), thickness: 1),
-        itemCount: profileItem.length,
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-      ),
+    return ListView.separated(
+      itemBuilder:
+          (itemContext, index) => GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (itemContext) {
+                    return BlocProvider.value(
+                      value: context.read<FavUserProductsCubit>(),
+                      child: profilePages(context)[index],
+                    );
+                  },
+                ),
+              );
+            },
+            child: ProfileListViewItem(profileItem: profileItem[index]),
+          ),
+      separatorBuilder:
+          (itemContext, index) =>
+              const Divider(color: Color(0xFFE8E8E8), thickness: 1),
+      itemCount: profileItem.length,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
     );
   }
 }
 
-List<Widget> profilePages = [
-  Placeholder(),
-  MyOrdersView(),
-  Placeholder(),
-  FavorteOrderView(),
-];
+List<Widget> profilePages(BuildContext context) {
+  return [
+    Placeholder(),
+    MyOrdersView(),
+    Placeholder(),
+    FavorteProductsView(),
+    Placeholder(),
+    Placeholder(),
+    Placeholder(),
+  ];
+}

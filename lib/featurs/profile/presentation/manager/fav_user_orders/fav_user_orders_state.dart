@@ -1,34 +1,26 @@
 part of 'fav_user_orders_cubit.dart';
 
-sealed class FavUserOrdersState extends Equatable {
-  const FavUserOrdersState();
+abstract class FavUserProductsState extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
+
+class FavUserProductsInitial extends FavUserProductsState {}
+
+class FavUserProductLoaded extends FavUserProductsState {
+  final List<ProductEntity> products;
+
+  FavUserProductLoaded(this.products);
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [products];
 }
 
-final class AddFavUserOrdersInitial extends FavUserOrdersState {}
+class FavUserProuductsError extends FavUserProductsState {
+  final String message;
 
-final class AddFavUserOrdersloading extends FavUserOrdersState {}
+  FavUserProuductsError(this.message);
 
-final class AddFavUserOrdersSuccess extends FavUserOrdersState {}
-
-final class AddFavUserOrdersFaulier extends FavUserOrdersState {
-  final String errMessage;
-  // ignore: prefer_const_constructors_in_immutables
-  AddFavUserOrdersFaulier({required this.errMessage});
+  @override
+  List<Object?> get props => [message];
 }
-
-final class DeleteFavUserOrdersInitial extends FavUserOrdersState {}
-
-final class DeleteFavUserOrdersloading extends FavUserOrdersState {}
-
-final class DeleteFavUserOrdersSuccess extends FavUserOrdersState {}
-
-final class DeleteFavUserOrdersFaulier extends FavUserOrdersState {
-  final String errMessage;
-  // ignore: prefer_const_constructors_in_immutables
-  DeleteFavUserOrdersFaulier({required this.errMessage});
-}
-
-

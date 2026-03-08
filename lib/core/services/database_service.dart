@@ -1,4 +1,3 @@
-import 'package:e_commerce_fruits_hub/featurs/auth/domain/entities/user_entity.dart';
 
 abstract class DatabaseService {
   // abstraction of database consumer'rapper'
@@ -42,8 +41,8 @@ abstract class DatabaseService {
     // String? documenId,
     Map<String, dynamic>? queryParam,
   });
-  Stream<dynamic> streamDataFromCollectionWithInDocument({
-   required String path,
+  Future<dynamic> dataFromCollectionWithInDocument({
+    required String path,
     // required Map<String, dynamic> data,
     required String? documenId,
     required String subCollectionPath,

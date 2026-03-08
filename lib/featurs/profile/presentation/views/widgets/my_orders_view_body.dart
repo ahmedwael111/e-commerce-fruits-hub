@@ -1,8 +1,4 @@
-import 'package:accordion/accordion.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_fruits_hub/constants.dart';
-import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
-import 'package:e_commerce_fruits_hub/core/utils/assets.dart';
 import 'package:e_commerce_fruits_hub/core/widgets/coutom_app_bar.dart';
 import 'package:e_commerce_fruits_hub/featurs/profile/domain/entitiys/order_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/profile/presentation/views/widgets/order_item_accordion.dart';

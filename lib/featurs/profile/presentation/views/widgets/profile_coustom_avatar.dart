@@ -1,4 +1,3 @@
-import 'package:e_commerce_fruits_hub/core/helper_functions.dart/get_user_data_from_prefs.dart';
 import 'package:e_commerce_fruits_hub/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
@@ -18,12 +17,6 @@ class CoustomProfileAvatar extends StatelessWidget {
             borderRadius: BorderRadius.circular(50),
           ),
           child: Image.asset(Assets.assetsProfile),
-
-          //  Image.asset(
-          //   getUserDataFromPrefs().imageUrl.isNotEmpty
-          //       ? getUserDataFromPrefs().imageUrl
-          //       : Assets.assetsProfile,
-          // ),
         ),
         Positioned(
           bottom: 0,

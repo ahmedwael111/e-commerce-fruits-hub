@@ -1,7 +1,5 @@
 import 'package:e_commerce_fruits_hub/core/utils/app_colors.dart';
-import 'package:e_commerce_fruits_hub/core/utils/assets.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/domin/entitis/bottom_navBar_icon_entity.dart';
-import 'package:e_commerce_fruits_hub/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CoustomBottomNavBar extends StatefulWidget {

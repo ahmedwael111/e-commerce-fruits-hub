@@ -1,11 +1,9 @@
-import 'dart:ui';
 
 import 'package:e_commerce_fruits_hub/core/utils/app_colors.dart';
 import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
 import 'package:e_commerce_fruits_hub/core/utils/assets.dart';
 import 'package:e_commerce_fruits_hub/core/utils/dark_theme_cubite.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
@@ -47,7 +45,7 @@ List<ProfileListViewEntity> profileListViewEntity(context) => [
     trailing: Transform.scale(
       scale: MediaQuery.of(context).size.width * 0.002,
       child: FlutterSwitch(
-        value: false,
+        value: true,
         activeColor: AppColors.primaryColor,
         width: 55,
         onToggle: (value) {},

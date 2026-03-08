@@ -3,41 +3,28 @@ import 'package:e_commerce_fruits_hub/featurs/profile/presentation/manager/fav_u
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomFavBottom extends StatefulWidget {
-  const CustomFavBottom({
-    super.key,
-    required this.isFav,
-    required this.product,
-  });
-  final bool isFav;
+class CustomFavBottom extends StatelessWidget {
+  const CustomFavBottom({super.key, required this.product});
   final ProductEntity product;
 
   @override
-  State<CustomFavBottom> createState() => _CustomFavBottomState();
-}
-
-class _CustomFavBottomState extends State<CustomFavBottom> {
-  @override
   Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      transitionBuilder:
-          (Widget child, Animation<double> animation) =>
-              ScaleTransition(scale: animation, child: child),
-
-      duration: const Duration(milliseconds: 300),
-      child: IconButton(
-        onPressed: () {
-          context.read<FavUserProductsEditsCubit>().toggleFav(
-            widget.product,
-            context,
-          );
-        },
-        icon: Icon(
-          widget.isFav ? Icons.favorite : Icons.favorite_border_rounded,
-          color: widget.isFav ? Colors.red : Colors.grey,
-          key: ValueKey<bool>(widget.isFav),
-        ),
+    final favCubit = context.watch<FavUserProductsCubit>();
+    final isFav = favCubit.isFavorite(product.productId);
+    return IconButton(  
+      icon: Icon(
+        isFav ? Icons.favorite : Icons.favorite_border,
+        color: isFav ? Colors.red : Colors.black45,
       ),
+      onPressed: () {
+        context.read<FavUserProductsCubit>().toggleFav(product);
+      },
     );
   }
 }
+ // 1) كده فاضل اراجع الموضوع اتعمل ازاي بالظبك من شات  واركز ✅
+//  2) اشوف الحاجات اللي فاضله  ✅
+//  3) ااراجع علي كل حاجه في الكورس والمشروع 
+//  4) انشر المشروع علي لينكد ان 
+//  5) هنشوف اللي اللي بعد كده
+//        الله المستعان

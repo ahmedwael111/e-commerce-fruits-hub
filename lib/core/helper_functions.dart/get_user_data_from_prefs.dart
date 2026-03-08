@@ -10,3 +10,9 @@ UserModel getUserDataFromPrefs() {
   var userEntity = UserModel.fromMap(jsonDecode(jsonString));
   return userEntity;
 }
+
+// Set getFavUserProductsFromPrefs() {
+//   var jsonString = Prefs.getString(kFavUserProductsKey);
+//   var favUserProducts = jsonDecode(jsonString);
+//   return favUserProducts;
+// }

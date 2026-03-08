@@ -1,5 +1,4 @@
 import 'package:e_commerce_fruits_hub/constants.dart';
-import 'package:e_commerce_fruits_hub/core/utils/app_colors.dart';
 import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
 import 'package:e_commerce_fruits_hub/core/utils/assets.dart';
 import 'package:e_commerce_fruits_hub/core/widgets/coutom_app_bar.dart';
@@ -19,7 +18,7 @@ class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
   // final BuildContext context1;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context1) {
     return BlocConsumer<SignoutCubit, SignoutState>(
       listener: (context, state) {
         if (state is SignOutSuccess) {

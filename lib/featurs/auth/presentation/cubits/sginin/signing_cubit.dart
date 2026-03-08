@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce_fruits_hub/featurs/auth/domain/entities/user_entity.dart';

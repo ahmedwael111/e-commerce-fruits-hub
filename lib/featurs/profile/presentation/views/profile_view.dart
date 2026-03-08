@@ -19,6 +19,7 @@ class ProfileView extends StatelessWidget {
           BlocProvider(
             create: (context) => ProductsCubit(getIt<ProductsRepo>()),
           ),
+          
         ],
         child: ProfileViewBody(),
       ),

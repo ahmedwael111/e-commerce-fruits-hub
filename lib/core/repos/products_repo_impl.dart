@@ -24,7 +24,7 @@ class ProductsRepoImpl implements ProductsRepo {
               .map((e) => ProductModel.fromMap(e).toEntity())
               .toList();
       return right(products);
-    } on Exception catch (e) {
+    } on Exception {
       return left(ServerFailuer('خطاء في الاتصال بقاعدة البيانات'));
     }
   }
@@ -40,7 +40,7 @@ class ProductsRepoImpl implements ProductsRepo {
               .map((e) => ProductModel.fromMap(e).toEntity())
               .toList();
       return right(products);
-    } on Exception catch (e) {
+    } on Exception {
       return left(ServerFailuer('خطاء في الاتصال بقاعدة البيانات'));
     }
   }

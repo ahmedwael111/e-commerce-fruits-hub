@@ -13,7 +13,7 @@ class FavUserOrdersRepoImpl implements FavUserOrdersRepo {
   final DatabaseService databaseService;
   FavUserOrdersRepoImpl({required this.databaseService});
   @override
-  Future<Either<Failuer, void>> addFavUserOrders(
+  Future<Either<Failuer, void>> addFavUserProducts(
     ProductEntity productEntity,
   ) async {
     try {
@@ -33,7 +33,7 @@ class FavUserOrdersRepoImpl implements FavUserOrdersRepo {
   }
 
   @override
-  Future<Either<Failuer, void>> deleteFavUserOrders(
+  Future<Either<Failuer, void>> deleteFavUserProduct(
     ProductEntity productEntity,
   ) async {
     try {
@@ -52,26 +52,22 @@ class FavUserOrdersRepoImpl implements FavUserOrdersRepo {
   }
 
   @override
-  Stream<Either<Failuer, List<ProductEntity>>> fetchFavUserOrders() async* {
+  Future<Either<Failuer, List<ProductEntity>>> fetchFavUserProducts() async {
     try {
-      await for (var data in databaseService
-          .streamDataFromCollectionWithInDocument(
-            path: BackendEndpointsStatics.users,
-            documenId: getUserDataFromPrefs().id,
-            subCollectionPath: BackendEndpointsStatics.favUserOrders,
-          )) {
-        // var data1 = data as List<Map<String, dynamic>>;
-        List<ProductEntity> products =
-            (data as List<Map<String, dynamic>>)
-                .map((e) => ProductModel.fromMap(e).toEntity())
-                .toList();
-        yield right(products);
-      }
+      var data = await databaseService.dataFromCollectionWithInDocument(
+        path: BackendEndpointsStatics.users,
+        documenId: getUserDataFromPrefs().id,
+        subCollectionPath: BackendEndpointsStatics.favUserOrders,
+      );
+      // var data1 = data as List<Map<String, dynamic>>;
+      List<ProductEntity> products =
+          (data as List<Map<String, dynamic>>)
+              .map((e) => ProductModel.fromMap(e).toEntity())
+              .toList();
+      return right(products);
     } catch (e) {
       log('eviewOrders ViewOrderRepoImpl : ${e.toString()}');
-      yield left(ServerFailuer(e.toString()));
+      return left(ServerFailuer(e.toString()));
     }
   }
-
- 
 }

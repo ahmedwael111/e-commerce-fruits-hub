@@ -6,7 +6,6 @@ import 'package:e_commerce_fruits_hub/featurs/home/presentation/cubits/cart_cubi
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/cubits/cart_item_cubit/cart_item_cubit.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/one_product_view.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/action_bottons_ofCardItem.dart';
-import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/persistent_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';

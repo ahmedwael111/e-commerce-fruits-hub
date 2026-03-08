@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:e_commerce_fruits_hub/core/entities/review_entity.dart';
 import 'package:equatable/equatable.dart';

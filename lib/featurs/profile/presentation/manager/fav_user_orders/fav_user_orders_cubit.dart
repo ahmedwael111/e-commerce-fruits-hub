@@ -3,45 +3,51 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce_fruits_hub/core/entities/product_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/profile/domain/repos/fav_user_orders_repo.dart';
-import 'package:e_commerce_fruits_hub/featurs/profile/presentation/manager/stream_for_fav_user_products_cubit/stream_for_fav_user_products_cubit.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'fav_user_orders_state.dart';
 
-class FavUserProductsEditsCubit extends Cubit<FavUserOrdersState> {
-  FavUserProductsEditsCubit(this.favUserOrdersRepo)
-    : super(AddFavUserOrdersInitial());
+class FavUserProductsCubit extends Cubit<FavUserProductsState> {
+  FavUserProductsCubit(this.favUserOrdersRepo)
+    : super(FavUserProductsInitial());
 
   final FavUserOrdersRepo favUserOrdersRepo;
 
-  void toggleFav(ProductEntity productEntity, BuildContext context) {
-    if (context.read<StreamForFavUserProductsCubit>().favUserProducts != null &&
-        context.read<StreamForFavUserProductsCubit>().favUserProducts!.contains(
-          productEntity,
-        )) {
-      deleteFavUserOrders(productEntity);
+  List<ProductEntity> _favProducts = [];
+
+  // List<ProductEntity> get favProducts => _favProducts;
+
+  Future<void> fetchFavUserProducts() async {
+    final result = await favUserOrdersRepo.fetchFavUserProducts();
+
+    result.fold((l) => emit(FavUserProuductsError(l.errMessage)), (r) {
+      _favProducts = r;
+      emit(FavUserProductLoaded(List.from(_favProducts)));
+    });
+  }
+
+  Future<void> toggleFav(ProductEntity product) async {
+    final isFav = _favProducts.any((p) => p.productId == product.productId);
+
+    if (isFav) {
+      final result = await favUserOrdersRepo.deleteFavUserProduct(product);
+
+      result.fold((l) => emit(FavUserProuductsError(l.errMessage)), (_) {
+        _favProducts.removeWhere((p) => p.productId == product.productId);
+        emit(FavUserProductLoaded(List.from(_favProducts)));
+      });
     } else {
-      addFavUserOrders(productEntity);
+      final result = await favUserOrdersRepo.addFavUserProducts(product);
+
+      result.fold((l) => emit(FavUserProuductsError(l.errMessage)), (_) {
+        _favProducts.add(product);
+        emit(FavUserProductLoaded(List.from(_favProducts)));
+      });
     }
   }
 
-  Future<void> addFavUserOrders(ProductEntity productEntity) async {
-    emit(AddFavUserOrdersloading());
-    final result = await favUserOrdersRepo.addFavUserOrders(productEntity);
-    result.fold(
-      (l) => emit(AddFavUserOrdersFaulier(errMessage: l.errMessage)),
-      (r) => emit(AddFavUserOrdersSuccess()),
-    );
-  }
-
-  Future<void> deleteFavUserOrders(ProductEntity productEntity) async {
-    emit(DeleteFavUserOrdersloading());
-    final result = await favUserOrdersRepo.deleteFavUserOrders(productEntity);
-    result.fold(
-      (l) => emit(DeleteFavUserOrdersFaulier(errMessage: l.errMessage)),
-      (r) => emit(DeleteFavUserOrdersSuccess()),
-    );
+  bool isFavorite(String productId) {
+    return _favProducts.any((p) => p.productId == productId);
   }
 }

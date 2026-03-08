@@ -1,8 +1,5 @@
-import 'package:e_commerce_fruits_hub/core/widgets/snake_bar.dart';
-import 'package:e_commerce_fruits_hub/featurs/check%20out/domain/entitys/order_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/check%20out/presentation/views/widgets/step_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class StepsList extends StatelessWidget {
   const StepsList({

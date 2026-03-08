@@ -5,7 +5,6 @@ import 'package:e_commerce_fruits_hub/core/utils/app_styles.dart';
 import 'package:e_commerce_fruits_hub/core/widgets/coutom_app_bar.dart';
 import 'package:e_commerce_fruits_hub/core/widgets/search_text_field.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/product_header.dart';
-import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/product_header_with_refresh.dart';
 import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/products_gridview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

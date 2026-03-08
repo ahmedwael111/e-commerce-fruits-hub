@@ -24,8 +24,8 @@ class ShippingItem extends StatelessWidget {
         duration: const Duration(milliseconds: 300),
         padding: const EdgeInsets.only(
           top: 16,
-          left: 13,
-          right: 28,
+          left: 12,
+          right: 12,
           bottom: 16,
         ),
 
@@ -48,24 +48,19 @@ class ShippingItem extends StatelessWidget {
               isSelected ? ActiveSheppingItemDot() : InActiveSheppingItemDot(),
               SizedBox(width: 10),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    width: 200,
-                    child: Text(
-                      title,
-                      style: AppTextStyles.simibold13,
-                      textAlign: TextAlign.right,
-                    ),
+                  Text(
+                    title,
+                    style: AppTextStyles.simibold13,
+                    textAlign: TextAlign.right,
                   ),
                   SizedBox(height: 6),
-                  SizedBox(
-                    width: 200,
-                    child: Text(
-                      subtitle,
-                      textAlign: TextAlign.right,
-                      style: AppTextStyles.regular13.copyWith(
-                        color: Colors.black.withValues(alpha: 0.50),
-                      ),
+                  Text(
+                    subtitle,
+                    textAlign: TextAlign.right,
+                    style: AppTextStyles.regular13.copyWith(
+                      color: Colors.black.withValues(alpha: 0.50),
                     ),
                   ),
                 ],

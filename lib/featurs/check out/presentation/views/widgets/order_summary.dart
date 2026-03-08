@@ -33,13 +33,10 @@ class OrderSummaryWidget extends StatelessWidget {
           SizedBox(height: 8),
           Row(
             children: [
-              SizedBox(
-                width: 52,
-                child: Text(
-                  'التوصيل:',
-                  style: AppTextStyles.regular13.copyWith(
-                    color: const Color(0xFF4E5556),
-                  ),
+              Text(
+                'التوصيل :',
+                style: AppTextStyles.regular13.copyWith(
+                  color: const Color(0xFF4E5556),
                 ),
               ),
               Spacer(),

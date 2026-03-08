@@ -1,11 +1,7 @@
 import 'package:e_commerce_fruits_hub/core/cubits/products/products_cubit.dart';
 import 'package:e_commerce_fruits_hub/core/repos/products_repo.dart';
 import 'package:e_commerce_fruits_hub/core/services/get_it_server_locator.dart';
-import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/home_view_body.dart';
-import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/home_view_products_bloc_builder.dart';
-import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/product_gridView_blocConsumer_favProduct.dart';
-import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/product_view_body.dart';
-import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/products_gridView_blocBuilder.dart';
+import 'package:e_commerce_fruits_hub/featurs/home/presentation/views/widgets/home_view_body_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,9 +13,9 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       body: BlocProvider(
         create: (context) => ProductsCubit(getIt.get<ProductsRepo>()),
-      
-        child: MultiBlocListenerForProductsUpdates(child: HomeViewProductsBlocBuilder()),
-        ),
+
+        child: const HomeViewBodyBlocBuilder(),
+      ),
     ); // this nested providers is for add fav product, i added it here because the flowing widget tree is slivers and it have alot of issues
   }
 }

@@ -15,14 +15,17 @@ class ShowAdressWidget extends StatelessWidget {
         children: [
           Icon(Icons.pin_drop_outlined),
           SizedBox(width: 10),
-          Text(
-            context.read<OrderEntity>().shippingAddressEntity.toString(),
-            textAlign: TextAlign.right,
-            style: AppTextStyles.regular16.copyWith(
-              color: const Color(0xFF4E5556),
+          Flexible(
+            fit: FlexFit.tight,
+            child: Text(
+              context.read<OrderEntity>().shippingAddressEntity.toString(),
+              textAlign: TextAlign.right,
+              style: AppTextStyles.regular16.copyWith(
+                color: const Color(0xFF4E5556),
+              ),
             ),
           ),
-          Spacer(),
+          SizedBox(width: 1),
           GestureDetector(
             onTap: () {
               pageController.animateToPage(

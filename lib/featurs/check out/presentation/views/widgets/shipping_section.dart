@@ -1,6 +1,5 @@
 import 'package:e_commerce_fruits_hub/featurs/check%20out/domain/entitys/order_entity.dart';
 import 'package:e_commerce_fruits_hub/featurs/check%20out/presentation/views/widgets/shipping_item.dart';
-import 'package:e_commerce_fruits_hub/featurs/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
