@@ -18,13 +18,7 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  // int selectedIndex = 0;
-  // List<Widget> pages = const [
-  //   HomeView(),
-  //   ProductsView(),
-  //   CardView(),
-  //   ProfileView(),
-  // ];
+ 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -58,19 +52,3 @@ class _MainViewState extends State<MainView> {
 
 
 
-
-// return BlocProvider(
-//       create: (context) => CartCubit(),
-//       child: Scaffold(
-//         bottomNavigationBar: CoustomBottomNavBar(
-//           selectedIndexCallback: (index) {
-//             setState(() {
-//               selectedIndex = index;
-//             });
-//           },
-//         ),
-//         body: SafeArea(
-//           child: MainViewBody(selectedIndex: selectedIndex, pages: pages),
-//         ),
-//       ),
-//     );

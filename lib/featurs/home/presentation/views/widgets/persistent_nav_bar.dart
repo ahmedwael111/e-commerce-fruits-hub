@@ -17,7 +17,6 @@ class _PersistentNavBarState extends State<PersistentNavBar> {
   final PersistentTabController _controller = PersistentTabController(
     initialIndex: 0,
   );
-
   // Screens
   List<Widget> getPages(BuildContext context) {
     return const [
@@ -27,12 +26,6 @@ class _PersistentNavBarState extends State<PersistentNavBar> {
       ProfileView(),
     ];
   }
-  //   HomeView(),
-  //   ProductsView(),
-  //   CardView(),
-  //   ProfileView(),
-  // ];
-
   // NAV BAR ITEMS
   List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) {
     double width = MediaQuery.of(context).size.width;

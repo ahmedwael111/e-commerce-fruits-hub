@@ -11,13 +11,11 @@ class OurProductsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        
         PersistentNavBarNavigator.pushNewScreen(
           context,
           screen: ProductSearchResultView(categoryName: category.name),
           withNavBar: true,
           pageTransitionAnimation: PageTransitionAnimation.fade,
-         
         );
       },
       child: Column(
@@ -45,7 +43,7 @@ class OurProductsItem extends StatelessWidget {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(category.image),
-                      fit: BoxFit.cover,
+                      fit: BoxFit.scaleDown,
                     ),
                   ),
                 ),

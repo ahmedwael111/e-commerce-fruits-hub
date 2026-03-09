@@ -86,5 +86,6 @@ Future<void> _onRefresh(BuildContext context) async {
   await BlocProvider.of<ProductsCubit>(context).getProducts();
   // small delay optional to keep the indicator visible briefly
   await Future<void>.delayed(const Duration(milliseconds: 200));
+  // ignore: use_build_context_synchronously
   snakBar(context, 'تم تحديث المنتجات بنجاح');
 }

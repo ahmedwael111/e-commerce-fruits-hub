@@ -54,7 +54,7 @@ class _FruitItemState extends State<FruitItem> {
                 children: [
                   SizedBox(height: 12),
                   SizedBox(
-                    height: height * 0.12,
+                    height: height * 0.11,
                     child:
                         widget.product.imageUrl != null
                             ? Flexible(
